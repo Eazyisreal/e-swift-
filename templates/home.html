@@ -1,0 +1,23 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+{% block meta_description %}E-Swift | Home{% endblock %}
+{% block css %}{% static 'css/home.css' %}{% endblock %}
+{% block meta_keywords %}{% endblock %}
+
+{% block content %}
+  <div class="hero">
+    <div class="inner-hero">
+        <div class="hero-text">
+            <h1>Easy way to find your <br> dream property</h1>
+            <p>A great platform to buy, sell and rent your properties <br> without any agent or commissions.</p>
+        </div>
+
+        <form class="search-form" action="" method="post">
+            <input type="text" name="search" id="search" placeholder="Search Properties">
+            <button class="search-btn" type="submit">Search</button>
+        </form>
+    </div>
+  </div>
+{% endblock %}

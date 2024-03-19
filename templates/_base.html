@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{% block meta_description %} {% endblock %}" />
+    <meta name="keywords" content="{% block meta_keywords %} {% endblock %}" />
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% block css %}{% endblock %}">
+    <link rel="icon" type="image/svg+xml" href="{% static 'img/logo.svg' %}" />
+    {% block extra_head %} {% endblock %} {% load livereload_tags %}
+  </head>
+  <body class="wrapper">
+    <header class="header">
+      <div class="inner-header">
+        <a href="{% url 'home'%}">
+          <img src="{% static 'img/Logo.png' %}" alt="Company's Logo" />
+        </a>
+        <ul class="nav">
+          <a class="nav-links" href=""><li>Home</li></a>
+          <a class="nav-links" href=""><li>About Us</li></a>
+          <a class="nav-links" href=""><li>Projects</li></a>
+          <a class="nav-links" href=""><li>Properties</li></a>
+          <a class="nav-links" href=""><li>Blog</li></a>
+          <a class="nav-links" href=""><li>Contact us</li></a>
+        </ul>
+        <button class="btn">Sign In</button>
+      </div>
+    </header>
+    <main>{% block content %} {% endblock %}</main>
+    <footer class="footer">
+      <div class="inner-footer">
+        <p>
+          E-Swift Properties is a renowned industrial and commercial builder
+          that focuses on building long-term relationships with its clients.
+          With a success rate of two out of every three projects from returning
+          customers, it has been a significant player in the industry for years.
+        </p>
+        <ul class="footer-nav">
+          <h2 class="nav-link-title">Category</h2>
+          <a class="footer-nav-links" href=""> <li>Blog</li></a>
+          <a class="footer-nav-links" href=""> <li>Home</li></a>
+          <a class="footer-nav-links" href=""> <li>About</li> </a>
+        </ul>
+        <ul class="footer-nav">
+          <h2 class="nav-link-title">Links</h2>
+          <a class="footer-nav-links" href=""> <li>Projects</li></a>
+          <a class="footer-nav-links" href=""> <li>Listings</li></a>
+          <a class="footer-nav-links" href=""> <li>Contact Us</li> </a>
+          <a class="footer-nav-links" href=""> <li>Agents</li> </a>
+        </ul>
+        <div class="contact-info">
+          <div class="contact-info-inner">
+            <div class="contact-details">
+              <h2 class="title">Contact Details</h2>
+              <p class="body">
+                8, Owo Avenue, Opp Royal Birds Hotel, Ijapo Estate, Akure, 340
+                Akure, Nigeria
+              </p>
+            </div>
+
+            <div class="contact-mail">
+              <p>enquiry@e-swiftproperties.ng</p>
+              <p>+234 805 911 2878</p>
+            </div>
+          </div>
+          <div class="social-icons">
+            <a href="">
+              <img
+                src="{% static 'img/facebook.svg' %}"
+                alt="Facebook's Logo"
+              />
+            </a>
+            <a href="">
+              <img src="{% static 'img/twitter.svg' %}" alt="Twiitter's Logo" />
+            </a>
+            <a href="">
+              <img
+                src="{% static 'img/linkedin.svg' %}"
+                alt="Linkedin's Logo"
+              />
+            </a>
+            <a href="">
+              <img
+                src="{% static 'img/instagram.svg' %}"
+                alt="Instagram's Logo"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <div class="copyright">
+        <img src="{% static 'img/copyright.svg' %}" alt="Copyright icon" />
+        <p>2024 E-Swift Properties. All right reserved</p>
+      </div>
+    </footer>
+  </body>
+</html>
