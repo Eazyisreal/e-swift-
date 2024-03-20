@@ -40,10 +40,15 @@
 
 input{
     border: 1px solid #EBEBEB;
-    padding: .625rem 1.5rem;
+    padding: .625rem 2.5rem;
     outline: none;
     background: transparent;
     width: 18rem;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+    opacity: .7;
 }
 
 input::placeholder{
@@ -64,4 +69,231 @@ input::placeholder{
     font-family: 'Neue Montreal', sans-serif;
     font-weight: 500;
     text-align: center;
+}
+
+.relative{
+    position: relative;
+}
+
+.absolute{
+    position: absolute;
+    top: 20%;
+    padding: 0 0.62rem;
+}
+
+.services{
+    background-color: var(--secondary-color);
+    padding: 4rem 2rem 8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+
+.services-inner{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.services-top{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.services-top h2{
+    font-size: 2.625rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 700;
+}
+
+.services-top p{
+    font-size: 1.5rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+}
+
+.services-bottom{
+    display: grid;
+    grid-template-columns: repeat(3, 31.98%);
+    gap: 1rem;
+    width: 100%;
+}
+
+.service{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.service h3{
+    font-size: 2rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+}
+
+
+.service-inner{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.service-inner-text{
+    display: flex;
+    flex-direction: column;
+    gap: 1.375rem ;
+}
+
+.service-inner-text h3{
+    font-size: 2rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 700;
+}
+
+.service-inner-text p{
+    font-size: 1.125rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+}
+
+
+
+.properties{
+    background: url('../img/pattern.svg') no-repeat center #050505;
+    padding: 8rem 2rem  ;
+    display: flex;
+    gap: 10%;
+}
+
+.properties-left{
+    display: flex;
+    flex-direction: column;
+    gap: 10.25rem;
+    width: 45%;
+    justify-content: center;
+}
+
+.properties-text{
+    display: flex;
+    flex-direction: column;
+    gap: 3.25rem;
+    width: 75%;
+}
+
+.properties-text-top{
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.properties-text-top h2{
+    font-size: 2.625rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 700;
+    color: var(--secondary-color)
+}
+.properties-text-top p{
+    font-size: 1.5rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+    color: var(--secondary-color);
+    line-height: 1.7;
+}
+
+
+.properties-btn{
+    padding: 1.2rem;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    width: 45%;
+    font-size: 1.2rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+    text-align: center;
+}
+
+.property{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+.property-top{
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+}
+.property-top img{
+    width: 100%;
+}
+.property-details{
+    display: flex;
+    justify-content: space-between;
+}
+
+.property-details p{
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+}
+
+.property-bottom{
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+
+.property-bottom p{
+    color: var(--secondary-color);
+    font-size: 2.625rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.reviews{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.price{
+    display: flex;
+    gap: .625rem;
+    align-items: center;
+
+}
+.price p{
+    color: var(--secondary-color);
+    font-size: 2rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+}
+
+.ratings{
+    display: flex;
+    gap: .8125rem;
+    align-items: center;
+}
+
+.ratings p{
+    color: var(--secondary-color);
+    font-size: 1.625rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+}
+
+.properties-right{
+    display: flex;
+    flex-direction: column;
+    gap: 6.25rem;
+    width: 45%;
 }

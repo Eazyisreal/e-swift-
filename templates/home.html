@@ -7,6 +7,7 @@
 {% block meta_keywords %}{% endblock %}
 
 {% block content %}
+<!-- Hero Section -->
   <div class="hero">
     <div class="inner-hero">
         <div class="hero-text">
@@ -15,9 +16,144 @@
         </div>
 
         <form class="search-form" action="" method="post">
-            <input type="text" name="search" id="search" placeholder="Search Properties">
+            <div class="relative">
+                <img class="absolute" src="{% static 'img/search.svg' %}" alt="Search Icon" />
+                <input type="text" name="search" id="search" placeholder="Search Properties">
+            </div>
             <button class="search-btn" type="submit">Search</button>
         </form>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <div class="services">
+    <div class="services-inner">
+        <div class="services-top">
+            <h2>Our Services</h2>
+            <p>Dreams take shape in the hands of skilled builders.  <br> Let's embark on the journey of building your dream  <br> home together. Your vision, our expertise.</p>
+        </div>
+    </div>
+
+    <div class="services-bottom">
+        <div class="service">
+            <h3>01</h3>
+            <div class="service-inner">
+                <img src="{% static 'img/rent.svg' %}" alt="Property Rental image" />
+                <div class="service-inner-text">
+                    <h3>Property Renting</h3>
+                    <p>At E-swift Properties, we have a comprehensive listing of modern residential and commercial properties to suits wide variety of clients</p>
+                </div>
+            </div>
+        </div>
+        <div class="service">
+            <h3>02</h3>
+            <div class="service-inner">
+                <img src="{% static 'img/sale.svg' %}" alt="Property Sale image" />
+                <div class="service-inner-text">
+                    <h3>Property Sale</h3>
+                    <p>E-swift Property offers Nigeria's top property marketing and acquisition services. We educate our clients before selling or buying properties for them to ensure a smooth process.</p>
+                </div>
+            </div>
+        </div>
+        <div class="service">
+            <h3>03</h3>
+            <div class="service-inner">
+                <img src="{% static 'img/manage.svg' %}" alt="Property Management image" />
+                <div class="service-inner-text">
+                    <h3>Property Management</h3>
+                    <p>AE-swift Properties excels in managing and selling both residential and commercial properties, while also providing top-notch leasing services.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!--Properties-->
+  <div class="properties">
+    <div class="properties-left">
+        <div class="properties-text">
+            <div class="properties-text-top">
+                <h2>Properties</h2>
+                <p>We make the best choices with the hottest and most prestigious projects, please visit the details below to find out more</p>
+            </div>
+            <button class="properties-btn"> See All </button>
+        </div>
+
+        <div class="property">
+            <div class="property-top">
+                <img src="{% static 'img/property1.svg' %}" alt="Image of a mansion" />
+                <div class="property-details">
+                    <p>Duplex- Selling</p>
+                    <p>Lagos</p>
+                </div>
+            </div>
+
+            <div class="property-bottom">
+                <p>Spacious 5 Bedroom Modern Terrance Duplex</p>
+                <div class="reviews">
+                    <div class="price">
+                        <img src="{% static 'img/naira.svg' %}" alt="Naira Sign">
+                        <p>110,000,000</p>
+                    </div>
+
+                    <div class="ratings">
+                        <img src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
+                        <p>(0)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="properties-right">
+        <div class="property">
+            <div class="property-top">
+                <img src="{% static 'img/property2.svg' %}" alt="Image of a mansion" />
+                <div class="property-details">
+                    <p>Villa- Selling</p>
+                    <p>Lagos</p>
+                </div>
+            </div>
+
+            <div class="property-bottom">
+                <p>Luxury 4 Bedroom Fully Detached</p>
+                <div class="reviews">
+                    <div class="price">
+                        <img src="{% static 'img/naira.svg' %}" alt="Naira Sign">
+                        <p>300,000,000</p>
+                    </div>
+
+                    <div class="ratings">
+                        <img src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
+                        <p>(0)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="property">
+            <div class="property-top">
+                <img src="{% static 'img/property3.svg' %}" alt="Image of a mansion" />
+                <div class="property-details">
+                    <p>Duplex- Rent</p>
+                    <p>Lagos</p>
+                </div>
+            </div>
+
+            <div class="property-bottom">
+                <p>4 Bedroom Semi-Detached Duplex.</p>
+                <div class="reviews">
+                    <div class="price">
+                        <img src="{% static 'img/naira.svg' %}" alt="Naira Sign">
+                        <p>5,000,000</p>
+                    </div>
+
+                    <div class="ratings">
+                        <img src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
+                        <p>(0)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   </div>
 {% endblock %}
