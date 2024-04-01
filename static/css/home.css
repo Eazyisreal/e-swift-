@@ -1017,6 +1017,10 @@ option {
         font-size: .875rem;
     }
 
+    .inner-contact{
+        height: 40vh;
+    }
+
   .inner-contact .inner-contact-text h2{
         font-size: 1.75rem;
         width: 70%;

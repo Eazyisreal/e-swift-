@@ -113,7 +113,7 @@
   .harmburger .bar {
     display: block;
     width: 1.7rem;
-    height: .18rem;
+    height: .09375rem;
     margin: 0.20rem auto;
     transition: all 0.3s ease-in-out;
     background: var(--primary-color);
