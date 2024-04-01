@@ -1,0 +1,56 @@
+.about-hero{
+    background: url('../img/pattern4.avif') no-repeat center #050505;
+    padding: 8rem ;
+}
+
+.inner-about{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-about h1{
+    color: var(--secondary-color);
+    font-size: 3.25rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 700;
+}
+
+.inner-about p{
+    color: var(--secondary-color);
+    font-size: 1.25rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    width: 65.5%;
+    line-height: 1.7;
+}
+
+
+.achievements{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.details h2{
+    color: var(--secondary-color);
+    font-size: 4.375rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+}
+.details p{
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+}
+

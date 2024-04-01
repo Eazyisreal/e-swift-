@@ -1,0 +1,104 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}Projects{% endblock %}
+{% block meta_description %}E-Swift | Properties{% endblock %}
+{% block css %}{% static 'css/home.css' %}{% endblock %}
+{% block other_css %}{% static 'css/project.css' %}{% endblock %}
+{% block meta_keywords %}{% endblock %}
+
+{% block content %}
+<div class="project-hero">
+    <div class="inner-hero">
+        <div class="hero-text">
+            <h1>Properties</h1>
+            <p>Each place is a good choice, it will help you make the right decision, do not miss the opportunity to discover our wonderful properties.</p>
+
+            <div class="advance-search">
+                <form class="inner-advanced-search">
+                    <div class="top-search">
+                        <div class="top-top-search">
+                            <div class="search-details">
+                                <div class="inner-search-details">
+                                    <h2>Keyword:</h2>
+                                    <div class="search-form relative">
+                                        <img loading="lazy" class="absolute" src="{% static 'img/blog-search.svg' %}" alt="Search Icon" />
+                                        <input class="input" type="text" name="search" id="search" placeholder="Search Properties">
+                                    </div>
+                                </div>
+                                <div class="inner-search-details">
+                                    <h2>Location:</h2>
+                                    <div class="search-form relative">
+                                        <img loading="lazy" class="absolute" src="{% static 'img/location.svg' %}" alt="Search Icon" />
+                                        <input class="advanced-search-input" type="text" name="search" id="search" placeholder="City, State">
+                                    </div>
+                                </div>
+                                <div class="inner-search-details">
+                                    <h2>Category:</h2>
+                                    <div class="search-form relative">
+                                        <select class="select" name="category" id="category">
+                                            <option value="" selected disabled>All Category</option>
+                                            <option value="category1">Category 1</option>
+                                            <option value="category2">Category 2</option>
+                                            <option value="category3">Category 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="top-bottom-search">
+                                <div class="top-bottom-text">
+                                    <h3>Advance search</h3>
+                                    <img loading="lazy" class="" src="{% static 'img/dropdown.svg' %}" alt="Search Icon" />
+                                </div>
+                                <div class="search-details">
+                                     <div class="inner-search-details">
+                                        <h2>Blocks:</h2>
+                                        <div class="search-form relative">
+                                            <select class="select" name="category" id="category">
+                                                <option value="" selected disabled>0</option>
+                                                <option value="category1">1</option>
+                                                <option value="category2">2</option>
+                                                <option value="category3">3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="inner-search-details">
+                                        <h2>Floor:</h2>
+                                        <div class="search-form relative">
+                                            <select class="select" name="category" id="category">
+                                                <option value="" selected disabled>0</option>
+                                                <option value="category1">1</option>
+                                                <option value="category2">2</option>
+                                                <option value="category3">3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="inner-search-details">
+                                        <h2>Rooms:</h2>
+                                        <div class="search-form relative">
+                                            <select class="select" name="category" id="category">
+                                                <option value="" selected disabled>0</option>
+                                                <option value="category1">1</option>
+                                                <option value="category2">2</option>
+                                                <option value="category3">3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="buttons">
+                            <button class="submit" type="submit"> Search </button>
+                            <button class="reset" type="reset"> Clear All </button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'properties_list.html' %}
+{% endblock %}

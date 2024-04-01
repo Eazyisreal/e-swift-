@@ -1,0 +1,53 @@
+.project-hero{
+    background: url('../img/project-hero.avif') no-repeat center;
+    padding: 8rem 0;
+}
+
+.properties-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.properties-details p {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+}
+
+
+.properties-bottom p {
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+
+.properties-price {
+    display: flex;
+    gap: .625rem;
+    align-items: center;
+
+}
+
+.properties-price p {
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+}
+
+.properties-ratings {
+    display: flex;
+    gap: .8125rem;
+    align-items: center;
+}
+
+.properties-ratings p {
+    color: var(--primary-color);
+    font-size: 1.625rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+}

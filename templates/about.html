@@ -1,0 +1,81 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}About Us{% endblock %}
+{% block meta_description %}E-Swift | About Us{% endblock %}
+{% block other_css %}{% static 'css/about.css' %}{% endblock %}
+{% block css %}{% static 'css/home.css' %}{% endblock %}
+{% block meta_keywords %}{% endblock %}
+{% block content %}
+<!-- Hero -->
+<div class="about-hero">
+    <div class="inner-about">
+        <h1>Get to know E-Swift</h1>
+        <p>Welcome to the heart of excellence in the building sector! We pride ourselves on being more than just professionals; we're visionaries, creators, and experts deeply rooted in every facet of the built environment.</p>
+    </div>
+</div>
+
+<!-- Who we are -->
+<div class="services">
+    <div class="services-inner">
+        <div class="services-top">
+            <h2>Who We Are</h2>
+            <p>As Realtors we are committed to maintaining the highest standards for knowledge and ethics. We’re different because of our exceptional focus on our clients’ needs, our agents’ education, and the community
+        </div>
+    </div>
+
+    <div class="services-bottom">
+        <div class="service">
+            <div class="service-inner">
+                <img  loading="lazy" src="{% static 'img/mission.avif' %}" alt="Property Rental image" />
+                <div class="service-inner-text">
+                    <h3>Our Mission</h3>
+                    <p>To be the best estate experts in Nigeria by providing our clients with exceptional service through integrity, knowledge, & commitment</p>
+                </div>
+            </div>
+        </div>
+        <div class="service">
+            <div class="service-inner">
+                <img src="{% static 'img/integrity.avif' %}" alt="Property Sale image" />
+                <div  loading="lazy" class="service-inner-text">
+                    <h3>Integrity</h3>
+                    <p>We started E-swift Properties Mart with the vision of bringing a personal connection to the process of selling and buying a home for our clients</p>
+                </div>
+            </div>
+        </div>
+        <div class="service">
+            <div class="service-inner">
+                <img  loading="lazy" src="{% static 'img/commitment.avif' %}" alt="Property Management image" />
+                <div class="service-inner-text">
+                    <h3>Commitment</h3>
+                    <p>We value each real estate transaction and strive for exceptional support. Our continuous education helps us better serve clients, agents, and communities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  -->
+<div class="services">
+    <div class="inner-contact">
+        <div class="achievements">
+            <div class="details">
+                <h2>300+</h2>
+                <p>Properties Sold</p>
+            </div>
+            <div class="details">
+                <h2>600+</h2>
+                <p>Properties Rented</p>
+            </div>
+            <div class="details">
+                <h2>9+</h2>
+                <p>Years Experience</p>
+            </div>
+        </div>
+    </div>  
+</div>
+
+<!-- blog -->
+{% include 'blog_list.html'%}
+
+{%endblock%}

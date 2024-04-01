@@ -1,0 +1,87 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}Blog{% endblock %}
+{% block meta_description %}E-Swift | Blog{% endblock %}
+{% block css %}{% static 'css/home.css' %}{% endblock %}
+{% block meta_keywords %}{% endblock %}
+
+{% block content %}
+<div class="blog-container">
+    <div class="featured">
+        <div class="blog-top">
+            <div class="blog-top-text">
+                <h2>Blog</h2>
+                <p>Explore the Latest News, Tips, and Insights in Real Estate with Our Informative Blog Section</p>
+            </div>
+            <form class="search-form" action="" method="post">
+                <div class="relative">
+                    <img  loading="lazy" class="absolute" src="{% static 'img/blog-search.svg' %}" alt="Search Icon" />
+                    <input class="input" type="text" name="search" id="search" placeholder="Search Keywords">
+                </div>
+                <button class="blog-search-btn" type="submit">Search</button>
+            </form>
+        </div>
+        <div class="featured-bottom">
+            <div class="featured-details">
+                <img  loading="lazy" src="{% static 'img/blog-image1.avif' %}" alt="Project Image"/>
+                <div class="blog-info">
+                    <p>20-Feb-2023</p>
+                    <p>Real-estate</p>
+                </div>
+
+                <div class="blog-details">
+                    <h2>Lagos commits to enforcing real estate investments laws</h2>
+
+                    <div class="blog-text">
+                        <p>This year isn't the best of years for housing as existing deficits further worsened due to peculiarity of the environment</p>
+                        <a href="">
+                            <p>Read More</p>
+                        </a>
+                    </div>
+                </div>
+             
+            </div>
+
+            <div class="featured-details">
+                <img  loading="lazy" src="{% static 'img/blog-image2.avif' %}" alt="Project Image"/>
+                <div class="blog-info">
+                    <p>20-Feb-2023</p>
+                    <p>Real-estate</p>
+                </div>
+
+                <div class="blog-details">
+                    <h2>Inflation,soaring housing price dim real estate sector in 2023</h2>
+
+                    <div class="blog-text">
+                        <p>This year isn't the best of years for housing as existing deficits further worsened due to peculiarity of the environment</p>
+                        <a href="">
+                            <p>Read More</p>
+                        </a>
+                    </div>
+                </div>
+            
+            </div>
+
+            <div class="featured-details">
+                <img  loading="lazy" src="{% static 'img/blog-image3.avif' %}" alt="Project Image"/>
+                <div class="blog-info">
+                    <p>20-Feb-2023</p>
+                    <p>Real-estate</p>
+                </div>
+
+                <div class="blog-details">
+                    <h2>Firms seeks tax rebate for developers of affordable housing</h2>
+
+                    <div class="blog-text">
+                        <p>This year isn't the best of years for housing as existing deficits further worsened due to peculiarity of the environment</p>
+                        <a href="">
+                            <p>Read More</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  {% endblock %}

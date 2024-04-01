@@ -21,15 +21,31 @@
     width: .25rem;
   }
   
+
+  .logo{
+    width: 3rem;
+  }
   
-  .wrapper {
+  /* .wrapper {
     max-width: 1440px;
     margin: 0 auto;
-  }
+    overflow-x: hidden;
+  } */
   
   @font-face {
     font-family: 'Neue Montreal';
-    src: url('../font/Neue.woff') format('woff');
+    src: url('../font/neue-bold.woff') format('woff');
+  }
+  
+  
+  @font-face {
+    font-family: 'Neue Montreal Medium';
+    src: url('../font/neue-medium.woff') format('woff');
+  }
+  
+  @font-face {
+    font-family: 'Neue Montreal Book';
+    src: url('../font/neue-book.woff') format('woff');
   }
   
   
@@ -39,6 +55,10 @@
     color: var(--secondary-color);
     text-align: center;
     padding: 2rem;
+    position: fixed;
+    width: 100%;
+    opacity: .7;
+    z-index: 5;
 }
 
 .inner-header{
@@ -56,13 +76,13 @@
 .nav-links{
     text-decoration: none;
     color: var(--secondary-color);
-    font-size: 1.25rem;
-    font-family: 'Neue Montreal', sans-serif;
+    font-size: 1.125rem;
+    font-family: 'Neue Montreal Medium', sans-serif;
     font-weight: 500;
 }
 
 .btn{
-    padding: 1rem 2rem;
+    padding: 1rem 3.5rem;
     background-color: var(--secondary-color);
     color: var(--primary-color);
     border: none;
@@ -72,6 +92,33 @@
     font-weight: 500;
     transition: all 0.3s ease;
 }
+.btn:hover{
+    padding: 1rem 3.5rem;
+    background-color: transparent;
+    color: var(--secondary-color);
+    border: 1px solid white;
+    border-radius: 6.25rem;
+    cursor: pointer;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+
+.harmburger, .harmburger-parent {
+    display: none;
+    cursor: pointer;
+  }
+
+  .harmburger .bar {
+    display: block;
+    width: 1.7rem;
+    height: .18rem;
+    margin: 0.20rem auto;
+    transition: all 0.3s ease-in-out;
+    background: var(--primary-color);
+  }
+
 
 .footer{
     background-color: var(--primary-color);
@@ -85,13 +132,13 @@
 
 .inner-footer{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 32.4%);
     gap: 1.2rem;
 }
 
 .inner-footer p{
     font-size: 1rem;
-    font-family: 'Neue Montreal', sans-serif;
+    font-family: 'Neue Montreal Medium', sans-serif;
     font-weight: 500;
     line-height: 1.5;
     text-align: left;
@@ -104,6 +151,10 @@
     flex-direction: column;
     list-style: none;
     gap: 2.25rem;
+}
+.footer-nav-items{
+    display: grid;
+    grid-template-columns: repeat(2, 49.5%);
 }
 
 .footer-nav-links{
@@ -185,12 +236,157 @@
     line-height: 1.5;
 }
 
-@media screen and (max-width : 768px){
+.newsletter-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+
+.newsletter{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.newsletter h3{
+    font-size: 1.5rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+}
+
+.newsletter-form{
+    display: flex;
+    gap: .75rem;
+}
+
+
+input{
+    border: 1px solid #EBEBEB;
+    padding: .625rem 2.5rem;
+    outline: none;
+    background: transparent;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+}
+
+input::placeholder{
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    font-family: 'Neue Montreal Book', sans-serif;
+    font-weight: 500;
+}
+
+.search-btn{
+    padding: .625rem 1.5rem;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    width: 6rem;
+    font-size: 1rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.nav.visible{
+    display: flex;
+    background: var(--primary-color);
+    width: 100%;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    opacity: .9;
+    padding: 3rem;
+}
+
+harmburger.visible .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.harmburger.visible .bar:nth-child(1) {
+    -webkit-transform: translateY(8px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
+}
+
+.harmburger.visible .bar:nth-child(3) {
+    -webkit-transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+@media screen and (max-width : 992px){
+    
+.harmburger-parent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--secondary-color);
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+}
+    
+    .harmburger {
+        display: block;
+    }
+
+    .harmburger.visible .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .harmburger.visible .bar:nth-child(1) {
+        -webkit-transform: translateY(8px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .harmburger.visible .bar:nth-child(3) {
+        -webkit-transform: translateY(-8px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .header{
+        background-color: transparent;
+        opacity: 1;
+    }
+
+
     .nav, .btn{
         display: none;
     }
 
     .inner-footer{
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .footer{
+        padding: 1rem;
+    }
+
+    .newsletter-form{
+        flex-direction: column;
+    }
+
+    .footer-nav{
+        align-items: flex-start;
+    }
+}
+
+@media screen and (max-width : 475px){
+
+    .header{
+        padding: 2rem 1rem;
+    }
+
+    .harmburger-parent{
+        width: 3rem;
+        height: 3rem;
     }
 }
