@@ -1,0 +1,18 @@
+{% load static %}
+
+{% if messages %}
+<div id="success-alert" class="alert-success" role="alert">
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+
+    <div id="message-hamburger" class="message-harmburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+</div>
+{% endif %}
+
+

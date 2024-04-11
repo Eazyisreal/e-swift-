@@ -11,39 +11,45 @@
                 <img loading="lazy" class="" src="{% static 'img/dropdown.svg' %}" alt="Search Icon" />
             </div>
         </div>
+        {% for project in projects%}
         <div class="featured-bottom">
+          <a href="{% url 'project_details' project.slug %}">
             <div class="featured-details">
-                <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
+                <img  loading="lazy" src="{{project.thumbnail.url}}" alt="Project Image"/>
                 <div class="featured-info">
-                    <h3>4 Bedroom Detached Luxury Apartment With Swimming Pool and Landscaping</h3>
+                    <h3>{{project.title}}</h3>
                     <div class="stars">
                         <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
                         <p>(0)</p>
                     </div>
                 </div>
             </div>
+          </a>
+        </div>
+        {% endfor %}
+    </div>
+    
 
-            <div class="featured-details">
-                <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
-                <div class="featured-info">
-                    <h3>Office Renovation Project Akure, Ondo State Nigeria</h3>
-                    <div class="stars">
-                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
-                        <p>(0)</p>
-                    </div>
-                </div>
+    <div class="pagination">
+        <div class="pagination-text">
+            <div class="pagination-text-top">
+                <p>Showing</p>
+                <span>1</span>
             </div>
+            <p>of 50</p>
+        </div>
 
-            <div class="featured-details">
-                <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
-                <div class="featured-info">
-                    <h3>Office Renovation Project Akure, Ondo State Nigeria</h3>
-                    <div class="stars">
-                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
-                        <p>(0)</p>
-                    </div>
-                </div>
+        <div class="pagination-number">
+            <img src="{% static 'img/arrow-left.svg' %}" alt="Arrow facing left">
+            <div class="numbers">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>...</span>
+                <span>50</span>
+
             </div>
+            <img src="{% static 'img/arrow-right.svg' %}" alt="Arrow facing right">
         </div>
     </div>
-  </div>
+</div>

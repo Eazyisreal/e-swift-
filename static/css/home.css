@@ -6,12 +6,18 @@
     height: 100vh;
 }
 
+a{
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
 .inner-hero {
     display: flex;
     flex-direction: column;
     gap: 3.25rem;
     justify-content: center;
     align-items: center;
+    height: 100%;
 }
 
 .hero-text {
@@ -55,6 +61,19 @@ input {
     font-size: 1rem;
     font-family: 'Neue Montreal', sans-serif;
     font-weight: 500;
+    padding: 0 .625rem;
+}
+.blog-input {
+    border: 1px solid #EBEBEB;
+    height: 3.125rem;
+    outline: none;
+    background: transparent;
+    width: 18rem;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+    padding:  .625rem 2.5rem;
 }
 
 .input {
@@ -67,6 +86,7 @@ input {
     font-size: 1rem;
     font-family: 'Neue Montreal', sans-serif;
     font-weight: 500;
+    padding:  .625rem 2.5rem;
 }
 
 .advanced-search-input {
@@ -79,6 +99,7 @@ input {
     font-size: 1rem;
     font-family: 'Neue Montreal', sans-serif;
     font-weight: 500;
+    padding:  .625rem 2.5rem;
 }
 
 .select {
@@ -96,16 +117,31 @@ input {
 
 input::placeholder {
     color: var(--secondary-color);
-    font-size: 1.5rem;
-    font-family: 'Neue Montreal Book', sans-serif;
+    font-size: 1.25rem;
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+}
+
+.blog-input::placeholder {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+    opacity: .7;
+}
+
+.input::placeholder {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    font-family: 'Neue Montreal Medium', sans-serif;
     font-weight: 500;
 }
 
 
 .advanced-search-input::placeholder {
     color: var(--primary-color);
-    font-size: 1.5rem;
-    font-family: 'Neue Montreal Book', sans-serif;
+    font-size: 1.25rem;
+    font-family: 'Neue Montreal Medium', sans-serif;
     font-weight: 500;
 }
 
@@ -145,7 +181,7 @@ input::placeholder {
 
 .services {
     background-color: var(--secondary-color);
-    padding: 4rem 2rem 8rem;
+    padding: 8rem 2rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -431,6 +467,19 @@ input::placeholder {
     flex-direction: column;
     gap: 1.25rem;
 }
+.blog-featured-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    background-color: #FCFCFC;
+    padding: 1rem;
+    width: 100%;
+}
+
+
+.blog-featured-details img{
+    width: 100%;
+}
 
 .featured-info {
     display: flex;
@@ -440,7 +489,7 @@ input::placeholder {
 
 .featured-info h3 {
     font-size: 1.35rem;
-    font-family: 'Neue Montreal', sans-serif;
+    font-family: 'Neue Montreal Medium', sans-serif;
     font-weight: 500;
 }
 
@@ -452,7 +501,7 @@ input::placeholder {
 
 .stars p {
     font-size: 1.25rem;
-    font-family: 'Neue Montreal', sans-serif;
+    font-family: 'Neue Montreal Medium', sans-serif;
     font-weight: 500;
 }
 
@@ -564,10 +613,72 @@ input::placeholder {
     font-weight: 500;
 }
 
+
+.blog-details-container{
+    display: flex;
+    padding: 10rem 2rem 8rem;
+    width: 100%;
+    gap: 2.5rem;
+}
+
+.blog-information{
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+}
+
+.blog-information p{
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+    line-height: 1.8;
+    font-size: 1.375rem;
+}
+
 .blog-details {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+}
+
+
+.similar-blog{
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 32%;
+}
+
+.similar-blog-bottom{
+    display: flex;
+    flex-direction: column;
+    gap: 2.625rem;
+}
+.similar-blog-bottom h3{
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+    line-height: 1.3;
+    font-size: 2rem;
+    padding: 0 1rem;
+}
+
+.blog-information-top{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.blog-information-top p{
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+    line-height: 1.3;
+    font-size: 1.25rem;
+}
+
+.blog-information-top h2{
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 700;
+    line-height: 1.3;
+    font-size: 2.625rem;
 }
 
 .blog-details h2 {
@@ -669,15 +780,15 @@ input::placeholder {
     --animation-direction: reverse;
 }
 
-.scroller[data-animated=true] .scroller-inner{
+.scroller[data-animated=true] .scroller-inner {
     flex-wrap: nowrap;
     animation: scroll var(--animation-duration, 30s) var(--animation-direction, forwards) linear infinite;
     width: fit-content;
 }
 
-@keyframes scroll{
-    to{
-        transform: translate(-100%);
+@keyframes scroll {
+    100% {
+        transform: translateX(-100%);
     }
 }
 
@@ -693,6 +804,7 @@ input::placeholder {
     display: flex;
     align-items: flex-start;
     gap: .5rem;
+    width: 30rem;
 }
 
 .card-text {
@@ -775,6 +887,7 @@ input::placeholder {
 .search-details {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
 .inner-search-details {
@@ -785,7 +898,7 @@ input::placeholder {
 
 .inner-search-details h2 {
     font-size: 1.5rem;
-    font-family: 'Neue Montreal', sans-serif;
+    font-family: 'Neue Montreal Medium', sans-serif;
     font-weight: 500;
 }
 
@@ -861,15 +974,71 @@ option {
 
 .type p{
     font-size: 1rem;
-    font-family: 'Neue Montreal', sans-serif;
+    font-family: 'Neue Montreal Medium', sans-serif;
     font-weight: 500;
     text-align: center;
 }
 
 
+.blog-search-form{
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+
 @media screen and (max-width : 992px){
 
-  
+    .blog-information-top p{
+        font-size: .875rem;
+    }
+
+    
+    .blog-information-top h2 {
+        font-size: 2rem;
+    }
+
+    .blog-information p{
+        font-size: 1rem;
+    }
+
+    .similar-blog-bottom h3{
+        font-size: 1.5rem;
+    }
+
+    .blog-details-container{
+        flex-direction: column;
+        padding: 10rem 1rem 8rem;
+    }
+
+    .blog-search-form{
+        flex-direction: column;
+        gap: 1.25rem;
+        align-items: flex-start;
+    }
+
+    .similar-blog{
+        width: 100%;
+    }
+
+    .blog-container{
+        padding: 10rem 1rem;
+    }
+
+  .blog-top{
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .blog-top-text p{
+    font-size: 1.125rem;
+    width: 100%;
+  }
+
+  .blog-top-text h2{
+    font-size: 1.5rem;
+    width: 100%;
+  }
 
     .inner-hero{
         height: 60vh;
@@ -911,9 +1080,24 @@ option {
         padding: 2rem 1rem;
     }
 
-    .cards{
+    .search-details{
         flex-direction: column;
+        gap: 1rem;
     }
+
+    input::placeholder, .advanced-search-input::placeholder, .blog-input::placeholder {
+        font-size: 1rem;
+    }
+
+    .inner-search-details h2{
+        font-size: 1.125rem;
+    }
+
+    
+    .stars img{
+        width: 6rem ;
+    }
+
 }
 
 @media screen and (max-width : 475px){
@@ -991,10 +1175,6 @@ option {
 
     .ratings img{
         width: 4rem;
-    }
-
-    .stars img{
-        width: 6rem ;
     }
 
     .ratings p{

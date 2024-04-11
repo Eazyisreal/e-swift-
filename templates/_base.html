@@ -8,6 +8,7 @@
     <meta name="keywords" content="{% block meta_keywords %} {% endblock %}" />
     <title>{% block title %} {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/project.css' %}" />
     <link rel="stylesheet" href="{% block css %}{% endblock %}">
     <link rel="stylesheet" href="{% block other_css %}{% endblock %}">
     <link rel="icon" type="image/svg+xml" href="{% static 'img/logo.svg' %}" />
@@ -26,27 +27,35 @@
             <a class="nav-links" href="{% url 'project' %}"><li>Projects</li></a>
             <a class="nav-links" href="{% url 'properties'%}"><li>Properties</li></a>
             <a class="nav-links" href="{% url 'blog' %}"><li>Blog</li></a>
-            <a class="nav-links" href=""><li>Contact us</li></a>
+            <a class="nav-links" href="{% url 'contact' %}"><li>Contact us</li></a>
           </ul>
-          <button id="btn" class="btn">Sign In</button>
-
-            <div class="harmburger-parent">
+          <a href="{% url 'login' %}">
+            <button class="btn signin-btn" id="btn">Sign In</button>
+          </a>        
+          <div class="harmburger-parent">
             <div id="hamburger" class="harmburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </div>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
+        </div>
+        
         </div>
       </header>
       <main>{% block content %} {% endblock %}</main>
+      <div class="popup" id="popup">
+      </div>
       <div class="testimonials">
         <div class="inner-contact">
             <div class="inner-contact-text">
                 <h2>Have a question? Get in touch!</h2>
-                <button class="contact-btn"> Contact Us </button>
+                <a href="{% url 'contact' %}">
+                  <button class="contact-btn"> Contact Us </button>
+                </a>
             </div>
         </div>
+    </div>
+      
       <footer class="footer ">
         <div class="inner-footer">
           <div class="newsletter-container">
@@ -64,14 +73,27 @@
               </form>
             </div>
           </div>
-        <div class="footer-nav-items">
           <ul class="footer-nav">
             <h3 class="nav-link-title">Category</h3>
-            <a class="footer-nav-links" href=""> <li>Blog</li></a>
             <a class="footer-nav-links" href=""> <li>Home</li></a>
-            <a class="footer-nav-links" href=""> <li>About</li> </a>
+            <a class="footer-nav-links" href=""> <li>About Us</li></a>
+            <a class="footer-nav-links" href=""> <li>Blog</li> </a>
           </ul>
           <ul class="footer-nav">
+            <h3 class="nav-link-title">Links</h3>
+            <a class="footer-nav-links" href=""> <li>Projects</li></a>
+            <a class="footer-nav-links" href=""> <li>Listings</li></a>
+            <a class="footer-nav-links" href=""> <li>Contact Us</li> </a>
+            <a class="footer-nav-links" href=""> <li>Agents</li> </a>
+          </ul>
+        <div class="footer-nav-items">
+          <ul class="mobile-footer-nav">
+            <h3 class="nav-link-title">Category</h3>
+            <a class="footer-nav-links" href=""> <li>Home</li></a>
+            <a class="footer-nav-links" href=""> <li>About Us</li></a>
+            <a class="footer-nav-links" href=""> <li>Blog</li> </a>
+          </ul>
+          <ul class="mobile-footer-nav">
             <h3 class="nav-link-title">Links</h3>
             <a class="footer-nav-links" href=""> <li>Projects</li></a>
             <a class="footer-nav-links" href=""> <li>Listings</li></a>
@@ -129,8 +151,24 @@
         </div>
       </footer>
       <script src="{% static 'js/harmburger.js' %}"></script>
+      <script>
+        function openModal() {
+            const popup = document.getElementById('popup');
+            popup.classList.toggle('visible');
+            popup.innerHTML = '<object type="text/html" data="login" ></object>';
+            document.body.addEventListener('click', closeModalOutside);
+        }
+    
+        function closeModalOutside(event) {
+            var popup = document.getElementById('popup');
+            if (!popup.contains(event.target) && event.target !== document.getElementById('btn')) {
+                popup.classList.remove('visible');
+                document.body.removeEventListener('click', closeModalOutside);
+            }
+        }
+    </script>
+    
       {% block extra_scripts %}
       {% endblock %}
-    </div>
   </body>
 </html>

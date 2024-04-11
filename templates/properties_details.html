@@ -1,0 +1,248 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}Properties Details {% endblock %}
+{% block meta_description %}E-Swift | Properties Details{% endblock %}
+{% block css %}{% static 'css/home.css' %}{% endblock %}
+{% block other_css %}{% static 'css/project.css' %}{% endblock %}
+{% block meta_keywords %}{% endblock %}
+
+{% block content %}
+<div class="project-details">
+    <div class="inner-project-details">
+        <div class="details-container">
+            <div class="properties-details-container-left">
+                <div class="details-container-left-top">
+                    <h2>4 Bedroom Semi-Detached Duplex</h2>
+
+                    <div class="details-bottom">
+                        <p>Location: Ondo</p>
+                        <p>Date: Feb-10-2024</p>
+                        <div class="stars">
+                            <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
+                            <p>(0)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details-container-left-bottom">
+                    <h3>Features</h3>
+                    <hr>
+                    <div class="properties-features">
+                        <p>Swimming pool</p>
+                        <p>|</p>
+                        <p>Balcony</p>
+                        <p>|</p>
+                        <p>Garden</p>
+                        <p>|</p>
+                        <p>Security</p>
+                        <p>|</p>
+                        <p>Laundry Room</p>
+                        <p>|</p>
+                        <p>Spa & Massage</p>
+                        <p>|</p>
+                        <p>Indoor Bar</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details-container-right">
+                <div class="half">
+                    <p>Price:</p>
+                    <p>Category:</p>
+                    <p>Type:</p>
+                    <p>Living Room:</p>
+                    <p>Dinning:</p>
+                    <p>Numbers of bedrooms:</p>
+                    <p>Numbers of bathrooms:</p>
+                    <p>Numbers of floors:</p>
+                </div>
+                <div class="second-half">
+                    <p>300,000,000/Year</p>
+                    <p>Duplex</p>
+                    <p>Rent</p>
+                    <p>3</p>
+                    <p>1</p>
+                    <p>5</p>
+                    <p>6</p>
+                    <p>2</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="featured-bottom">
+          <div class="featured-details">
+              <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
+         
+          </div>
+
+          <div class="featured-details">
+              <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
+       
+          </div>
+
+          <div class="featured-details">
+              <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
+        
+          </div>
+          <div class="featured-details">
+              <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
+         
+          </div>
+
+          <div class="featured-details">
+              <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
+       
+          </div>
+
+          <div class="featured-details">
+              <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
+        
+          </div>
+    </div>
+
+    <div class="inner-project-details">
+      <div class="details-container">
+        <form class="contact-form">
+            <h2>Book an inspection</h2>
+            <div class="contact-input-fields">
+                    <div class="input-details">
+                        <label for="Name"> Name</label>
+                        <input type="text" name="name" id="name" placeholder="Name">
+                    </div>
+                    <div class="input-details">
+                        <label for="Phone"> Phone</label>
+                        <input type="text" name="" id="phone" placeholder="Phone">
+                    </div>    
+                <div class="input-details">
+                    <label for="Email"> Email</label>
+                    <input class="long-input" type="email" name="email" id="email" placeholder="Email Address">
+                </div>   
+                <div class="input-details">
+                    <label for="Message"> Message </label>
+                    <textarea class="message" placeholder="Message" id="message" cols="30" rows="10"></textarea>
+                </div> 
+            </div>
+
+            <button class="contact-message-btn">Book an inspection</button>
+        </form>
+
+       <div class="space">
+            <div class="agent-details">
+                <img  loading="lazy" src="{% static 'img/agent1.avif' %}" alt="Agent's Image"/>
+                <div class="agent-info">
+                    <div class="agent-info-top">
+                        <h4>Anthony Micheal</h4>
+                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Star Icon" />
+
+                    </div>
+
+                    <div class="agent-info-bottom">
+                        <div class="contact-info">
+                            <p>Sold Properties: 4</p>
+                            <p>Phone Number: +2348575963254</p>
+                            <p>Email: anthony@e-swiftproperties.ng</p>
+                        </div>
+                        <button class="agent-btn"> Contact </button>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form">
+                <h2>Write  a review</h2>
+                <div class="contact-input-fields">
+                    <div class="input-details">
+                        <textarea class="message" placeholder="Review" id="message" cols="30" rows="10"></textarea>
+                    <p>Please login to write review!</p>
+
+                    </div> 
+                </div>
+                <button class="contact-message-btn">Submit Review</button>
+            </form>
+       </div>
+      </div>
+    </div>
+
+    <div class="project-map-width">
+        <h2>Location</h2>
+        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.785776670279!2d5.211290420397084!3d7.265203373969386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10478fdb2ccb85d5%3A0xe3bee361a8ba7622!2s8%20Owo%20Avenue%2C%20Akure%20340110%2C%20Ondo!5e0!3m2!1sen!2sng!4v1712217717513!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="featured">
+      <div class="similar">
+        <h2>Similar Projects</h2>
+        <div class="filters">
+            <div class="type">
+                <p>Selling</p>
+                <img loading="lazy" class="" src="{% static 'img/dropdown.svg' %}" alt="Search Icon" />
+            </div>
+            <div class="type">
+                <p>All Category</p>
+                <img loading="lazy" class="" src="{% static 'img/dropdown.svg' %}" alt="Search Icon" />
+            </div>
+        </div>
+      </div>
+        <div class="featured-bottom">
+          <a href="{% url 'project_details' %}">
+            <div class="featured-details">
+                <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
+                <div class="featured-info">
+                    <h3>4 Bedroom Detached Luxury Apartment With Swimming Pool and Landscaping</h3>
+                    <div class="stars">
+                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
+                        <p>(0)</p>
+                    </div>
+                </div>
+            </div>
+          </a>
+
+            <div class="featured-details">
+                <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
+                <div class="featured-info">
+                    <h3>Office Renovation Project Akure, Ondo State Nigeria</h3>
+                    <div class="stars">
+                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
+                        <p>(0)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-details">
+                <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
+                <div class="featured-info">
+                    <h3>Office Renovation Project Akure, Ondo State Nigeria</h3>
+                    <div class="stars">
+                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
+                        <p>(0)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="pagination">
+        <div class="pagination-text">
+            <div class="pagination-text-top">
+                <p>Showing</p>
+                <span>1</span>
+            </div>
+            <p>of 50</p>
+        </div>
+
+        <div class="pagination-number">
+            <img src="{% static 'img/arrow-left.svg' %}" alt="Arrow facing left">
+            <div class="numbers">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>...</span>
+                <span>50</span>
+
+            </div>
+            <img src="{% static 'img/arrow-right.svg' %}" alt="Arrow facing right">
+        </div>
+    </div>
+
+</div>
+{% endblock %}

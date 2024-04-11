@@ -1,6 +1,20 @@
-.project-hero{
+.project-hero {
     background: url('../img/project-hero.avif') no-repeat center;
     padding: 8rem 0;
+}
+.contact-hero {
+    background: url('../img/project-hero.avif') no-repeat center;
+    padding: 12rem 0;
+    position: relative;
+}
+
+.project-inner-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 3.25rem;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 .properties-details {
@@ -10,8 +24,8 @@
 
 .properties-details p {
     color: var(--primary-color);
-    font-size: 1.5rem;
-    font-family: 'Neue Montreal', sans-serif;
+    font-size: 1.125rem;
+    font-family: 'Neue Montreal Medium', sans-serif;
     font-weight: 500;
 }
 
@@ -23,6 +37,68 @@
     font-weight: 700;
     line-height: 1.5;
 }
+
+.properties-bottom .price p {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.properties-details-container-left{
+    display: flex;
+    flex-direction: column;
+    gap: 3.5625rem;
+    width: 60%;
+    align-items: center;
+}
+
+.details-container-left-top{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5625rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-container-left-bottom{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5625rem;
+    width: 100%;
+}
+
+.properties-features{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+.properties-features p{
+    color: var(--secondary-color);
+    font-size: 1.25rem;
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+
+
+.details-container-left-bottom h3{
+    color: var(--secondary-color);
+    font-size: 2rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+}
+
+.ratings p {
+    color: var(--primary-color);
+    font-size: 1.625rem;
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+}
+
 
 
 .properties-price {
@@ -39,6 +115,8 @@
     font-weight: 500;
 }
 
+
+
 .properties-ratings {
     display: flex;
     gap: .8125rem;
@@ -48,6 +126,478 @@
 .properties-ratings p {
     color: var(--primary-color);
     font-size: 1.625rem;
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+}
+
+.project-search-form {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.pagination{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 4rem 0rem;
+    gap: 2rem;
+    width: 100%;
+}
+
+.pagination-text, .pagination-text-top{
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+
+.pagination-text-top p, .pagination-text p{
+    font-size: 1.125rem;
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+}
+
+.pagination-text-top span{
+    border: 1px solid #000000;
+    padding: .2rem .5rem;
+    font-size: 1.125rem;
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+}
+
+.pagination-number{
+    display: flex;
+    gap: .75rem;
+}
+
+.numbers{
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+}
+
+.numbers span{
+    border: 1px solid #000000;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.125rem;
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+    align-items:  center;
+    justify-content: center;
+    display: flex;
+}
+
+#dropdown-details.visible {
+    display: flex !important;
+}
+
+#dropdown-details {
+    display: none;
+    cursor: pointer;
+}
+
+
+.contact-frame{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #050505;
+    padding: 8rem ;
+    z-index: 1;
+    width: 80%;
+    position: absolute;
+    top: 60%;
+}
+
+.contact-form{
+    display: flex;
+    flex-direction: column;
+    gap: 2.625rem;
+    width: 100%;
+}
+
+.inner-contact-frame{
+    display: flex;
+    flex-direction: column;
+    gap: 3.25rem;
+    width: 100%;
+}
+
+.contact-form h2{
+    color: var(--secondary-color);
+    font-size: 2rem;
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 700;
+}
+
+.contact-input-fields{
+    display: flex;
+    flex-direction: column;
+    gap: 1.875rem;
+}
+
+
+.biodata{
+    display: flex;
+    gap: 1.5rem;
+}
+
+.input-details{
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.input-details p{
+    color: var(--secondary-color);
+    font-size: 1.125rem;
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+}
+
+label{
+    color: var(--secondary-color);
+    font-size: 1.125rem;
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+}
+
+.input-details input{
+    border: 1px solid #EBEBEB;
+    height: 3.125rem;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    color: var(--secondary-color);
+    font-size: 1rem;
     font-family: 'Neue Montreal', sans-serif;
     font-weight: 500;
+    padding: 0 .625rem;
+}
+.input-details .long-input{
+    border: 1px solid #EBEBEB;
+    height: 3.125rem;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+    padding: 0 .625rem;
+
+}
+.message{
+    border: 1px solid #EBEBEB;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+    resize: none;
+    padding:  .625rem;
+
+}
+
+.message::placeholder{
+    color: var(--secondary-color);
+    font-size: 1.25rem;
+    font-family: 'Neue Montreal Book', sans-serif;
+    font-weight: 500;
+    padding: 2rem;
+}
+.contact-message-btn{
+    padding: 1rem 3.5rem;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+    font-size: 1.125rem;
+}
+
+.white-space{
+    background-color: var(--secondary-color);
+    padding: 10rem;
+    height: 250vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.map{
+    width: 100%;
+}
+
+.map-width h2{
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.similar{
+    display: flex;
+    width: 100%;
+}
+
+.similar h2{
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 700;
+    font-size: 2.625rem;
+    white-space: nowrap;
+}
+
+.map-width{
+    width: 100%;
+    position: absolute;
+    top: 240%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+}
+.project-map-width h2{
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.project-map-width{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+}
+
+.project-details{
+    padding: 8rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.inner-project-details{
+    background-color: #050505;
+    width: 100%;
+    padding: 4rem;
+}
+
+.details-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 6.25rem;
+}
+
+.details-container-left{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5625rem;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-container-left h2, .details-container-left-top h2{
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 700;
+    font-size: 2.625rem;
+    color: var(--secondary-color);
+}
+
+
+.details-bottom{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.details-bottom p{
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: var(--secondary-color);
+}
+
+.details-container-right{
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+}
+
+.half{
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+}
+
+.half p{
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: var(--secondary-color);
+}
+.second-half{
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+    align-items: flex-end;
+}
+
+.second-half p{
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: var(--secondary-color);
+}
+
+.space{
+    display: flex;
+    flex-direction: column;
+    gap: 3.25rem;
+}
+
+
+@media screen and (max-width : 992px) {
+
+    .pagination{
+        justify-content: center;
+    }
+
+    .similar{
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .similar h2{
+        font-size: 1.5rem;
+    }
+
+
+    .contact-form h2{
+        font-size: 1.5rem;
+    }
+
+    .pagination-text{
+        display: none;
+    }
+
+    .white-space{
+        padding: 1rem;
+        height: 190vh;
+    }
+
+    .contact-frame{
+        padding: 2rem;
+        width: 90%;
+        top: 40%;
+    }
+    .advance-search {
+        padding: 2rem;
+    }
+
+    .biodata{
+        flex-direction: column;
+    }
+
+    .project-inner-hero {
+        padding: 0 2rem;
+    }
+
+
+    .select {
+        width: 100%;
+        padding: 0.625rem 0;
+    }
+
+    .input,
+    .advanced-search-input {
+        width: 100%;
+    }
+
+    .filters {
+        justify-content: flex-start;
+    }
+
+    .properties-bottom .ratings p {
+        font-size: 1rem;
+    }
+
+
+
+    .properties-bottom p {
+        font-size: 1.75rem;
+    }
+
+    .properties-bottom .price p{
+        font-size: 1.25rem;
+    }
+
+
+    .map-width{
+        top: 180%;
+    }
+
+    .details-bottom{
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .details-container{
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .properties-details-container-left,.details-container-left, .details-container-right{
+        width: 100%;
+    }
+
+    .details-container-left h2, .details-container-left-top h2{
+        font-size: 1.5rem;
+    }
+
+    .details-container-left-bottom h3 {
+        font-size: 1.25rem;
+    }
+
+    
+    .details-bottom p,.half p, .second-half p, .properties-features p{
+        font-size: 1rem;
+        
+    }
+
+    .project-details{
+        padding: 8rem 1rem;
+    }
+
+
+}
+
+
+
+
+@media screen and (max-width : 738px) {
+    .contact-frame{
+        top: 50%;
+    }
+
+    .inner-project-details{
+        padding: 1.25rem;
+    }
+}
+
+
+@media screen and (max-width : 400px) {
+    .contact-frame{
+        top: 55%;
+    }
 }

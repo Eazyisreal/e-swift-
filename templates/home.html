@@ -18,7 +18,7 @@
         <form class="search-form" action="" method="post">
             <div class="relative">
                 <img  loading="lazy" class="absolute" src="{% static 'img/search.svg' %}" alt="Search Icon" />
-                <input type="text" name="search" id="search" placeholder="Search Properties">
+                <input class="home-input" type="text" name="search" id="search" placeholder="Search Properties">
             </div>
             <button class="search-btn" type="submit">Search</button>
         </form>
@@ -279,42 +279,8 @@
   {% include 'blog_list.html'%}
 
   <!-- testimonials-->
-  <div class="testimonials">
-    <h2>Testimonials</h2>
-    <div class="testimony scroller">
-        <div class="cards scroller-inner">
-            <div class="card">
-                <img  loading="lazy" src="{% static 'img/comma.svg' %}" alt="Apostrophe">
-
-                <div class="card-text">
-                    <p>Working with E-Swift has been an absolute pleasure from start to finish. Their professionalism, expertise, and dedication truly set them apart in the industry .
-                    </p>
-                    <p>-Anthony Michael</p>
-
-                </div>
-            </div>
-        </div>
-        <div class="cards scroller-inner" data-direction="right">
-                <div class="card">
-                    <img  loading="lazy" src="{% static 'img/comma.svg' %}" alt="Apostrophe">
-
-                    <div class="card-text">
-                        <p>Working with E-Swift has been an absolute pleasure from start to finish. Their professionalism, expertise, and dedication truly set them apart in the industry .
-                        </p>
-                        <p>-Anthony Michael</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img  loading="lazy" src="{% static 'img/comma.svg' %}" alt="Apostrophe">
-                    <div class="card-text">
-                        <p>Working with E-Swift has been an absolute pleasure from start to finish. Their professionalism, expertise, and dedication truly set them apart in the industry .
-                        </p>
-                        <p>-Anthony Michael</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  {% include 'testimonial.html' %}
+    
   </div>
 
 <script src="{% static 'js/scroll.js' %}"></script>
