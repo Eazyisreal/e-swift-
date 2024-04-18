@@ -1,8 +1,10 @@
 from django.db import models
 from authentication.models import CustomUser
-from PIL import Image
 from django.utils.text import slugify
 from django.core.validators import FileExtensionValidator
+from .utils.image_utils import save_resized_image
+
+
 
 class Project_Category(models.Model):
     name = models.CharField(max_length=100)
@@ -28,8 +30,16 @@ class Agent(models.Model):
     name = models.CharField(max_length=100)
     phone_number = models.IntegerField()
     email = models.EmailField(max_length=255)
-    image = models.ImageField(upload_to='agent_images', null=True, blank=True)
+    image = models.ImageField(upload_to='project_images/', null=True, blank=True,    validators=[
+        FileExtensionValidator(['jpg', 'jpeg', 'png', 'gif', 'svg', 'avif'])
+    ])
+    
+    def __str__(self):
+        return self.name
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        save_resized_image(self.image)
 
 class Project(models.Model):
     title = models.CharField(max_length=255)
@@ -55,35 +65,7 @@ class Project(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-        img = Image.open(self.thumbnail.path)
-
-        # When image height is greater than its width
-        if img.height > img.width:
-            # make square by cutting off equal amounts top and bottom
-            left = 0
-            right = img.width
-            top = (img.height - img.width)/2
-            bottom = (img.height + img.width)/2
-            img = img.crop((left, top, right, bottom))
-            # Resize the image to 300x300 resolution
-            if img.height > 500 or img.width > 500:
-                output_size = (500, 500)
-                img.thumbnail(output_size)
-                img.save(self.thumbnail.path)
-
-        # When image width is greater than its height
-        elif img.width > img.height:
-            # make square by cutting off equal amounts left and right
-            left = (img.width - img.height)/2
-            right = (img.width + img.height)/2
-            top = 0
-            bottom = img.height
-            img = img.crop((left, top, right, bottom))
-            # Resize the image to 300x300 resolution
-            if img.height > 500 or img.width > 500:
-                output_size = (500, 500)
-                img.thumbnail(output_size)
-                img.save(self.thumbnail.path)
+        save_resized_image(self.thumbnail)
 
     class Meta:
         ordering = ['-updated', '-created']
@@ -92,11 +74,18 @@ class Project(models.Model):
 
 
 class Property(models.Model):
+    AVAILABILITY_CHOICES = [
+        ('Selling', 'Selling'),
+        ( 'Rent', 'Rent'),
+    ]
+    availability = models.CharField(max_length=12, choices=AVAILABILITY_CHOICES)
     title = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
     property_type = models.CharField(max_length=100)
     category = models.ForeignKey(Property_Category,  on_delete=models.CASCADE)
     price = models.IntegerField()
+    living_room = models.IntegerField()
+    dinning = models.IntegerField()
     no_of_bedrooms = models.IntegerField()
     no_of_bathrooms = models.IntegerField()
     no_of_floors = models.IntegerField()
@@ -118,35 +107,9 @@ class Property(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-        img = Image.open(self.thumbnail.path)
-
-        # When image height is greater than its width
-        if img.height > img.width:
-            # make square by cutting off equal amounts top and bottom
-            left = 0
-            right = img.width
-            top = (img.height - img.width)/2
-            bottom = (img.height + img.width)/2
-            img = img.crop((left, top, right, bottom))
-            # Resize the image to 300x300 resolution
-            if img.height > 500 or img.width > 500:
-                output_size = (500, 500)
-                img.thumbnail(output_size)
-                img.save(self.thumbnail.path)
-
-        # When image width is greater than its height
-        elif img.width > img.height:
-            # make square by cutting off equal amounts left and right
-            left = (img.width - img.height)/2
-            right = (img.width + img.height)/2
-            top = 0
-            bottom = img.height
-            img = img.crop((left, top, right, bottom))
-            # Resize the image to 300x300 resolution
-            if img.height > 500 or img.width > 500:
-                output_size = (500, 500)
-                img.thumbnail(output_size)
-                img.save(self.thumbnail.path)
+        save_resized_image(self.thumbnail)
+        
+       
 
     class Meta:
         ordering = ['-updated', '-created']
@@ -164,64 +127,7 @@ class PropertyImage(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        img = Image.open(self.associated_property_image.path)
-
-        # When image height is greater than its width
-        if img.height > img.width:
-            # make square by cutting off equal amounts top and bottom
-            left = 0
-            right = img.width
-            top = (img.height - img.width)/2
-            bottom = (img.height + img.width)/2
-            img = img.crop((left, top, right, bottom))
-            # Resize the image to 300x300 resolution
-            if img.height > 500 or img.width > 500:
-                output_size = (8000, 8000)
-                img.thumbnail(output_size)
-                img.save(self.associated_property_image.path)
-
-        # When image width is greater than its height
-        elif img.width > img.height:
-            # make square by cutting off equal amounts left and right
-            left = (img.width - img.height)/2
-            right = (img.width + img.height)/2
-            top = 0
-            bottom = img.height
-            img = img.crop((left, top, right, bottom))
-            # Resize the image to 300x300 resolution
-            if img.height > 300 or img.width > 300:
-                output_size = (8000, 8000)
-                img.thumbnail(output_size)
-                img.save(self.associated_property_image.path)
-
-        # When image width is greater than its height
-        elif img.width > img.height:
-            # make square by cutting off equal amounts left and right
-            left = (img.width - img.height)/2
-            right = (img.width + img.height)/2
-            top = 0
-            bottom = img.height
-            img = img.crop((left, top, right, bottom))
-            # Resize the image to 300x300 resolution
-            if img.height > 200 or img.width > 200:
-                output_size = (8000, 8000)
-                img.thumbnail(output_size)
-                img.save(self.associated_property_image.path)
-
-        # When image width is greater than its height
-        elif img.width > img.height:
-            # make square by cutting off equal amounts left and right
-            left = (img.width - img.height)/2
-            right = (img.width + img.height)/2
-            top = 0
-            bottom = img.height
-            img = img.crop((left, top, right, bottom))
-            # Resize the image to 300x300 resolution
-            if img.height > 100 or img.width > 100:
-                output_size = (8000, 8000)
-                img.thumbnail(output_size)
-                img.save(self.associated_property_image.path)
-
+        save_resized_image(self.associated_property_image)
 
 class ProjectImage(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
@@ -232,65 +138,8 @@ class ProjectImage(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        img = Image.open(self.associated_project_image.path)
-
-        # When image height is greater than its width
-        if img.height > img.width:
-            # make square by cutting off equal amounts top and bottom
-            left = 0
-            right = img.width
-            top = (img.height - img.width)/2
-            bottom = (img.height + img.width)/2
-            img = img.crop((left, top, right, bottom))
-            # Resize the image to 300x300 resolution
-            if img.height > 500 or img.width > 500:
-                output_size = (8000, 8000)
-                img.thumbnail(output_size)
-                img.save(self.associated_project_image.path)
-
-        # When image width is greater than its height
-        elif img.width > img.height:
-            # make square by cutting off equal amounts left and right
-            left = (img.width - img.height)/2
-            right = (img.width + img.height)/2
-            top = 0
-            bottom = img.height
-            img = img.crop((left, top, right, bottom))
-            # Resize the image to 300x300 resolution
-            if img.height > 300 or img.width > 300:
-                output_size = (8000, 8000)
-                img.thumbnail(output_size)
-                img.save(self.associated_project_image.path)
-
-        # When image width is greater than its height
-        elif img.width > img.height:
-            # make square by cutting off equal amounts left and right
-            left = (img.width - img.height)/2
-            right = (img.width + img.height)/2
-            top = 0
-            bottom = img.height
-            img = img.crop((left, top, right, bottom))
-            # Resize the image to 300x300 resolution
-            if img.height > 200 or img.width > 200:
-                output_size = (8000, 8000)
-                img.thumbnail(output_size)
-                img.save(self.associated_project_image.path)
-
-        # When image width is greater than its height
-        elif img.width > img.height:
-            # make square by cutting off equal amounts left and right
-            left = (img.width - img.height)/2
-            right = (img.width + img.height)/2
-            top = 0
-            bottom = img.height
-            img = img.crop((left, top, right, bottom))
-            # Resize the image to 300x300 resolution
-            if img.height > 100 or img.width > 100:
-                output_size = (8000, 8000)
-                img.thumbnail(output_size)
-                img.save(self.associated_project_image.path)
-
-
+        save_resized_image(self.associated_project_image)
+      
 class ContactMessage(models.Model):
     name = models.CharField(max_length=255)
     phone = models.IntegerField()
@@ -359,6 +208,8 @@ class Blog(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-
+        save_resized_image(self.image)
+        
+    
     def __str__(self):
         return self.title

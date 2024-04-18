@@ -13,10 +13,10 @@ class PropertyAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Basic Information', {
-            'fields': ('title', 'thumbnail', 'price', 'property_type', 'category', 'location')
+            'fields': ('title', 'thumbnail', 'price', 'property_type', 'category', 'location', 'availability')
         }),
         ('Additional Information', {
-            'fields': ('no_of_bedrooms', 'no_of_bathrooms', 'no_of_floors', 'features', 'associated_agent', 'slug')
+            'fields': ('living_room', 'dinning' ,'no_of_bedrooms', 'no_of_bathrooms', 'no_of_floors', 'features', 'associated_agent', 'slug')
         }),
     )
     

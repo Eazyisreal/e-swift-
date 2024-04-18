@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,11 +16,11 @@
     {% block extra_head %} {% endblock %} {% load livereload_tags %}
   </head>
   <body class="">
-    <div class="">
       <header class="header">
         <div class="inner-header">
           <a href="{% url 'home'%}">
             <img loading="lazy" class="logo" src="{% static 'img/logo.svg' %}" alt="Company's Logo" />
+            <p>e-swift <br> <span>PROPERTYMART</span></p>
           </a>
           <ul id="nav" class="nav">
             <a class="nav-links" href="{% url 'home'%}"><li>Home</li></a>
@@ -42,7 +43,12 @@
         
         </div>
       </header>
-      <main>{% block content %} {% endblock %}</main>
+      {% include 'messages.html' %}
+
+      <main>
+        {% block content %} 
+        {% endblock %}
+      </main>
       <div class="popup" id="popup">
       </div>
       <div class="testimonials">
@@ -67,8 +73,8 @@
             <div class="newsletter">
               <h3>Sign up for our newsletter</h3>
               <form class="newsletter-form" action="" method="post">
-                <input type="email" placeholder="Email Address" />
-  
+                {%csrf_token%}
+                {% render_field form.email type='email' placeholder='Email Address'%}
                 <button class="search-btn">Sign Up</button>
               </form>
             </div>
@@ -120,24 +126,24 @@
               <a href="">
                 <img
                   loading="lazy"
-                  src="{% static 'img/facebook.avif' %}"
+                  src="{% static 'img/facebook.svg' %}"
                   alt="Facebook's Logo"
                 />
               </a>
               <a href="">
-                <img  loading="lazy" src="{% static 'img/twitter.avif' %}" alt="Twiitter's Logo" />
+                <img  loading="lazy" src="{% static 'img/twitter.svg' %}" alt="Twiitter's Logo" />
               </a>
               <a href="">
                 <img
                   loading="lazy"
-                  src="{% static 'img/linkedin.avif' %}"
+                  src="{% static 'img/linkedin.svg' %}"
                   alt="Linkedin's Logo"
                 />
               </a>
               <a href="">
                 <img
                   loading="lazy"
-                  src="{% static 'img/instagram.avif' %}"
+                  src="{% static 'img/instagram.svg' %}"
                   alt="Instagram's Logo"
                 />
               </a>
@@ -146,28 +152,11 @@
         </div>
         <hr />
         <div class="copyright">
-          <img  loading="lazy" src="{% static 'img/copyright.avif' %}" alt="Copyright icon" />
+          <img  loading="lazy" src="{% static 'img/copyright.svg' %}" alt="Copyright icon" />
           <p>2024 E-Swift Properties. All right reserved</p>
         </div>
       </footer>
       <script src="{% static 'js/harmburger.js' %}"></script>
-      <script>
-        function openModal() {
-            const popup = document.getElementById('popup');
-            popup.classList.toggle('visible');
-            popup.innerHTML = '<object type="text/html" data="login" ></object>';
-            document.body.addEventListener('click', closeModalOutside);
-        }
-    
-        function closeModalOutside(event) {
-            var popup = document.getElementById('popup');
-            if (!popup.contains(event.target) && event.target !== document.getElementById('btn')) {
-                popup.classList.remove('visible');
-                document.body.removeEventListener('click', closeModalOutside);
-            }
-        }
-    </script>
-    
       {% block extra_scripts %}
       {% endblock %}
   </body>

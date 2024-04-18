@@ -1,6 +1,7 @@
 {% extends "_base.html" %}
 {% load static %}
-
+{% load widget_tweaks %}
+{% load custom_filters %}
 {% block title %}Projects Details {% endblock %}
 {% block meta_description %}E-Swift | Projects Details{% endblock %}
 {% block css %}{% static 'css/home.css' %}{% endblock %}
@@ -34,7 +35,10 @@
                     <p>Numbers of floors:</p>
                 </div>
                 <div class="second-half">
-                    <p>{{project.price}}</p>
+                    <div class="price">
+                        <img  loading="lazy" src="{% static 'img/project-naira.svg' %}" alt="Naira Sign">
+                        <p>{{project.price| format_int_with_commas}}</p>
+                    </div>
                     <p>{{project.status}}</p>
                     <p>{{project.category}}</p>
                     <p>{{project.no_of_block}}</p>
@@ -126,6 +130,7 @@
       </div>
 
         <div class="featured-bottom">
+            {%for project in available_projects %}
             <a href="{% url 'project_details' project.slug %}">
                 <div class="featured-details">
                     <img  loading="lazy" src="{{project.thumbnail.url}}" alt="Project Image"/>
@@ -137,7 +142,8 @@
                         </div>
                     </div>
                 </div>
-              </a>
+            </a>
+            {%endfor%}
         </div>
     </div>
     
@@ -146,22 +152,36 @@
         <div class="pagination-text">
             <div class="pagination-text-top">
                 <p>Showing</p>
-                <span>1</span>
+                <span>{{projects.number}}</span>
             </div>
-            <p>of 50</p>
+            <p>of {{projects.paginator.num_pages}}</p>
         </div>
 
         <div class="pagination-number">
-            <img src="{% static 'img/arrow-left.svg' %}" alt="Arrow facing left">
+            {% if projects.has_previous %}
+            <a href="?page=1">
+                <img src="{% static 'img/arrow-left.svg' %}" alt="First Page">
+            </a>
+            <a href="?page={{ projects.previous_page_number }}">
+                <img src="{% static 'img/arrow-left.svg' %}" alt="Previous Page">
+            </a>
+            {% endif %}
+    
             <div class="numbers">
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>...</span>
-                <span>50</span>
-
+                {% for page_num in projects.paginator.page_range %}
+                    <span {% if page_num == projects.number %} class="active"{% endif %}>
+                        <a href="?page={{ page_num }}">{{ page_num }}</a>
+                    </span>
+                {% endfor %}
             </div>
-            <img src="{% static 'img/arrow-right.svg' %}" alt="Arrow facing right">
+            {% if projects.has_next %}
+        <a href="?page={{ projects.next_page_number }}">
+            <img src="{% static 'img/arrow-right.svg' %}" alt="Next Page">
+        </a>
+        <a href="?page={{ projects.paginator.num_pages }}">
+            <img src="{% static 'img/arrow-right.svg' %}" alt="Last Page">
+        </a>
+        {% endif %}
         </div>
     </div>
 

@@ -1,13 +1,13 @@
 {% extends "_base.html" %}
 {% load static %}
-
+{% load widget_tweaks %}
 {% block title %}Contact Us{% endblock %}
 {% block meta_description %}E-Swift | Contact Us{% endblock %}
 {% block css %}{% static 'css/home.css' %}{% endblock %}
 {% block other_css %}{% static 'css/project.css' %}{% endblock %}
 {% block meta_keywords %}{% endblock %}
 
-{% block content %}
+{% block content %}     
 <div class="contact-hero">
     <div class="project-inner-hero">
         <div class="hero-text">
@@ -22,35 +22,59 @@
 <div class="white-space">
     <div class="contact-frame">
         <div class="inner-contact-frame">
-            <form class="contact-form">
+            
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <form method="post" action="{% url 'contact' %}" class="contact-form">
+                {% csrf_token %}
                 <h2>Get in touch</h2>
                 <div class="contact-input-fields">
                     <div class="biodata">
                         <div class="input-details">
-                            <label for="Name"> Name</label>
-                            <input type="text" name="name" id="name" placeholder="Name">
+                            <label for="Name">Name</label>
+                            {% render_field contact_form.name type='text' placeholder='Enter your full name' class+='form-input'%}
+                            {% if contact_form.errors.name %}
+                                <p class="error">{{ contact_form.errors.name }}</p>
+                            {% endif %}
                         </div>
                         <div class="input-details">
-                            <label for="Phone"> Phone</label>
-                            <input type="text" name="" id="phone" placeholder="Phone">
+                            <label for="Phone">Phone</label>
+                            {% render_field contact_form.phone_number type='tel' placeholder='Enter your phone number' class+='form-input'%}
+                            {% if contact_form.errors.phone_number %}
+                                <p class="error">{{ contact_form.errors.phone_number }}</p>
+                            {% endif %}
                         </div>    
                     </div>
                     <div class="input-details">
-                        <label for="Email"> Email</label>
-                        <input class="long-input" type="email" name="email" id="email" placeholder="Email">
+                        <label for="Email">Email</label>
+                        {% render_field contact_form.email type='email' placeholder='Enter your email' class+='form-input'%}
+                        {% if contact_form.errors.email %}
+                            <p class="error">{{ contact_form.errors.email }}</p>
+                        {% endif %}
                     </div>   
                     <div class="input-details">
-                        <label for="Subject"> Subject </label>
-                        <input class="long-input" type="text" name="subject" id="subject" placeholder="Subject">
+                        <label for="Subject">Subject</label>
+                        {% render_field contact_form.subject type='text' placeholder='Enter your subject' class+='form-input'%}
+                        {% if contact_form.errors.subject %}
+                            <p class="error">{{ contact_form.errors.subject }}</p>
+                        {% endif %}
                     </div> 
                     <div class="input-details">
-                        <label for="Message"> Message </label>
-                        <textarea class="message" name="message" id="message" cols="30" rows="10"></textarea>
+                        <label for="Message">Message</label>
+                        {% render_field contact_form.message class+='message' cols='30' rows='10' type='text' placeholder='Enter your message' class+='form-input'%}
+                        {% if contact_form.errors.message %}
+                            <p class="error">{{ contact_form.errors.message }}</p>
+                        {% endif %}
                     </div> 
                 </div>
-
                 <button class="contact-message-btn">Send</button>
             </form>
+            
         </div>
     </div>
     <div class="map-width">

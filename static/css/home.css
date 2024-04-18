@@ -177,6 +177,7 @@ input::placeholder {
     position: absolute;
     top: 20%;
     padding: 0 0.62rem;
+    width: 3rem;
 }
 
 .services {
@@ -828,6 +829,7 @@ input::placeholder {
     justify-content: center;
     align-items: center;
     height: 50vh;
+    width: 60%;
 }
 
 .inner-contact-text {
@@ -970,6 +972,7 @@ option {
     padding: .625rem 1rem;
     display: flex;
     gap: .5rem;
+    align-items: center;
 }
 
 .type p{
@@ -1078,6 +1081,7 @@ option {
     
     .inner-contact{
         padding: 2rem 1rem;
+        width: 100%;
     }
 
     .search-details{

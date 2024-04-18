@@ -1,6 +1,6 @@
 {% extends "_base.html" %}
 {% load static %}
-
+{% load custom_filters %}
 {% block title %}Home{% endblock %}
 {% block meta_description %}E-Swift | Home{% endblock %}
 {% block css %}{% static 'css/home.css' %}{% endblock %}
@@ -79,21 +79,49 @@
             <button class="properties-btn"> See All </button>
         </div>
 
+    <a href="{% url 'properties_details' first_property.slug %}">
         <div class="property">
             <div class="property-top">
-                <img  loading="lazy" src="{% static 'img/property1.avif' %}" alt="Image of a mansion" />
+                <img  loading="lazy" src="{{first_property.thumbnail.url}}" alt="Image of a mansion" />
                 <div class="property-details">
-                    <p>Duplex- Selling</p>
-                    <p>Lagos</p>
+                    <p>{{first_property.property_type}}- {{first_property.availability}}</p>
+                    <p>{{first_property.location}}</p>
                 </div>
             </div>
+        <div class="property-bottom">
+            <p>{{first_property.title}}</p>
+            <div class="reviews">
+                <div class="price">
+                    <img  loading="lazy" src="{% static 'img/naira.svg' %}" alt="Naira Sign">
+                    <p>{{first_property.price|format_int_with_commas }}</p>
+                </div>
 
+                <div class="ratings">
+                    <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
+                    <p>(0) </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </a>
+    </div>
+
+    <div class="properties-right">
+        <a href="{% url 'properties_details' second_property.slug %}">
+            <div class="property">
+                <div class="property-top">
+                    <img  loading="lazy" src="{{second_property.thumbnail.url}}" alt="Image of a mansion" />
+                    <div class="property-details">
+                        <p>{{second_property.property_type}}- {{second_property.availability}}</p>
+                        <p>{{second_property.location}}</p>
+                    </div>
+                </div>
             <div class="property-bottom">
-                <p>Spacious 5 Bedroom Modern Terrance Duplex</p>
+                <p>{{second_property.title}}</p>
                 <div class="reviews">
                     <div class="price">
                         <img  loading="lazy" src="{% static 'img/naira.svg' %}" alt="Naira Sign">
-                        <p>110,000,000</p>
+                        <p>{{second_property.price|format_int_with_commas }}</p>
                     </div>
 
                     <div class="ratings">
@@ -102,58 +130,34 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="properties-right">
+            </div>
+        </a>
+        <a href="{% url 'properties_details' third_property.slug %}">
         <div class="property">
+
             <div class="property-top">
-                <img  loading="lazy" src="{% static 'img/property2.avif' %}" alt="Image of a mansion" />
+                <img  loading="lazy" src="{{third_property.thumbnail.url}}" alt="Image of a mansion" />
                 <div class="property-details">
-                    <p>Villa- Selling</p>
-                    <p>Lagos</p>
+                    <p>{{third_property.property_type}}- {{third_property.availability}}</p>
+                    <p>{{third_property.location}}</p>
                 </div>
             </div>
+        <div class="property-bottom">
+            <p>{{third_property.title}}</p>
+            <div class="reviews">
+                <div class="price">
+                    <img  loading="lazy" src="{% static 'img/naira.svg' %}" alt="Naira Sign">
+                    <p>{{third_property.price|format_int_with_commas }}</p>
+                </div>
 
-            <div class="property-bottom">
-                <p>Luxury 4 Bedroom Fully Detached</p>
-                <div class="reviews">
-                    <div class="price">
-                        <img  loading="lazy" src="{% static 'img/naira.svg' %}" alt="Naira Sign">
-                        <p>300,000,000</p>
-                    </div>
-
-                    <div class="ratings">
-                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
-                        <p>(0)</p>
-                    </div>
+                <div class="ratings">
+                    <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
+                    <p>(0) </p>
                 </div>
             </div>
         </div>
-        <div class="property">
-            <div class="property-top">
-                <img  loading="lazy" src="{% static 'img/property3.avif' %}" alt="Image of a mansion" />
-                <div class="property-details">
-                    <p>Duplex- Rent</p>
-                    <p>Lagos</p>
-                </div>
-            </div>
-
-            <div class="property-bottom">
-                <p>4 Bedroom Semi-Detached Duplex.</p>
-                <div class="reviews">
-                    <div class="price">
-                        <img  loading="lazy" src="{% static 'img/naira.svg' %}" alt="Naira Sign">
-                        <p>5,000,000</p>
-                    </div>
-
-                    <div class="ratings">
-                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
-                        <p>(0)</p>
-                    </div>
-                </div>
-            </div>
         </div>
+        </a>
     </div>
   </div>
 
@@ -168,38 +172,20 @@
             </div>
         </div>
         <div class="featured-bottom">
-            <div class="featured-details">
-                <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
-                <div class="featured-info">
-                    <h3>4 Bedroom Detached Luxury Apartment With Swimming Pool and Landscaping</h3>
-                    <div class="stars">
-                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
-                        <p>(0)</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="featured-details">
-                <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
-                <div class="featured-info">
-                    <h3>Office Renovation Project Akure, Ondo State Nigeria</h3>
-                    <div class="stars">
-                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
-                        <p>(0)</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="featured-details">
-                <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
-                <div class="featured-info">
-                    <h3>Office Renovation Project Akure, Ondo State Nigeria</h3>
-                    <div class="stars">
-                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
-                        <p>(0)</p>
-                    </div>
-                </div>
-            </div>
+            {% for project in recent_projects%}
+            <a href="{% url 'project_details' project.slug %}">
+              <div class="featured-details">
+                  <img  loading="lazy" src="{{project.thumbnail.url}}" alt="Project Image"/>
+                  <div class="featured-info">
+                      <h3>{{project.title}}</h3>
+                      <div class="stars">
+                          <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
+                          <p>(0)</p>
+                      </div>
+                  </div>
+              </div>
+            </a>
+          {% endfor %}
         </div>
     </div>
   </div>
@@ -215,11 +201,12 @@
         </div>
 
         <div class="featured-bottom">
+            {% for agent in agents %}
             <div class="agent-details">
-                <img  loading="lazy" src="{% static 'img/agent1.avif' %}" alt="Agent's Image"/>
+                <img  loading="lazy" src="{{agent.image.url}}" alt="Agent's Image"/>
                 <div class="agent-info">
                     <div class="agent-info-top">
-                        <h4>Anthony Micheal</h4>
+                        <h4>{{agent.name}}</h4>
                         <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Star Icon" />
 
                     </div>
@@ -227,51 +214,14 @@
                     <div class="agent-info-bottom">
                         <div class="contact-info">
                             <p>Sold Properties: 4</p>
-                            <p>Phone Number: +2348575963254</p>
-                            <p>Email: anthony@e-swiftproperties.ng</p>
+                            <p>Phone Number: {{agent.phone_number}}</p>
+                            <p>Email: {{agemt.email}}</p>
                         </div>
                         <button class="agent-btn"> Contact </button>
                     </div>
                 </div>
             </div>
-            <div class="agent-details">
-                <img  loading="lazy" src="{% static 'img/agent1.avif' %}" alt="Agent's Image"/>
-                <div class="agent-info">
-                    <div class="agent-info-top">
-                        <h4>Anthony Micheal</h4>
-                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Star Icon" />
-
-                    </div>
-
-                    <div class="agent-info-bottom">
-                        <div class="contact-info">
-                            <p>Sold Properties: 4</p>
-                            <p>Phone Number: +2348575963254</p>
-                            <p>Email: anthony@e-swiftproperties.ng</p>
-                        </div>
-                        <button class="agent-btn"> Contact </button>
-                    </div>
-                </div>
-            </div>
-            <div class="agent-details">
-                <img  loading="lazy" src="{% static 'img/agent1.avif' %}" alt="Agent's Image"/>
-                <div class="agent-info">
-                    <div class="agent-info-top">
-                        <h4>Anthony Micheal</h4>
-                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Star Icon" />
-
-                    </div>
-
-                    <div class="agent-info-bottom">
-                        <div class="contact-info">
-                            <p>Sold Properties: 4</p>
-                            <p>Phone Number: +2348575963254</p>
-                            <p>Email: anthony@e-swiftproperties.ng</p>
-                        </div>
-                        <button class="agent-btn"> Contact </button>
-                    </div>
-                </div>
-            </div>
+            {%endfor%}
         </div>
      </div>
   </div>

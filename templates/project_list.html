@@ -11,8 +11,8 @@
                 <img loading="lazy" class="" src="{% static 'img/dropdown.svg' %}" alt="Search Icon" />
             </div>
         </div>
-        {% for project in projects%}
         <div class="featured-bottom">
+        {% for project in paginated_projects%}
           <a href="{% url 'project_details' project.slug %}">
             <div class="featured-details">
                 <img  loading="lazy" src="{{project.thumbnail.url}}" alt="Project Image"/>
@@ -25,31 +25,37 @@
                 </div>
             </div>
           </a>
-        </div>
         {% endfor %}
+        </div>
     </div>
-    
-
     <div class="pagination">
         <div class="pagination-text">
             <div class="pagination-text-top">
                 <p>Showing</p>
-                <span>1</span>
+                <span>{{paginated_projects.number}}</span>
             </div>
-            <p>of 50</p>
+            <p>of {{paginated_projects.paginator.num_pages}}</p>
         </div>
 
         <div class="pagination-number">
-            <img src="{% static 'img/arrow-left.svg' %}" alt="Arrow facing left">
+            {% if paginated_projects.has_previous %}
+            <a href="?page={{ paginated_projects.previous_page_number }}">
+                <img src="{% static 'img/arrow-left.svg' %}" alt="Previous Page">
+            </a>
+            {% endif %}
+    
             <div class="numbers">
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>...</span>
-                <span>50</span>
-
+                {% for page_num in paginated_projects.paginator.page_range %}
+                    <span {% if page_num == paginated_projects.number %} class="active"{% endif %}>
+                        <a href="?page={{ page_num }}">{{ page_num }}</a>
+                    </span>
+                {% endfor %}
             </div>
-            <img src="{% static 'img/arrow-right.svg' %}" alt="Arrow facing right">
+            {% if paginated_projects.has_next %}
+        <a href="?page={{ paginated_projects.next_page_number }}">
+            <img src="{% static 'img/arrow-right.svg' %}" alt="Next Page">
+        </a>
+        {% endif %}
         </div>
     </div>
 </div>

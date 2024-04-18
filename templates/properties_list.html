@@ -12,22 +12,23 @@
             </div>
         </div>
         <div class="featured-bottom">
-            <a href="{%url 'properties_details' %}">
+        {% for property in paginated_properties %}
+            <a href="{%url 'properties_details' property.slug %}">
                 <div class="property">
                     <div class="property-top">
-                        <img  loading="lazy" src="{% static 'img/property1.avif' %}" alt="Image of a mansion" />
+                        <img  loading="lazy" src="{{property.thumbnail.url}}" alt="Image of a mansion" />
                         <div class="properties-details">
-                            <p>Duplex- Selling</p>
-                            <p>Lagos</p>
+                            <p>{{property.property_type}} - {{property.availability}}</p>
+                            <p>{{property.location}}</p>
                         </div>
                     </div>
         
                     <div class="properties-bottom">
-                        <p>Spacious 5 Bedroom Modern Terrance Duplex</p>
+                        <p>{{property.title}}</p>
                         <div class="reviews">
                             <div class="price">
                                 <img  loading="lazy" src="{% static 'img/naira-black.svg' %}" alt="Naira Sign">
-                                <p>110,000,000</p>
+                                <p>{{property.price}}</p>
                             </div>
         
                             <div class="ratings">
@@ -38,78 +39,39 @@
                     </div>
                 </div>
             </a>
-            <div class="property">
-                <div class="property-top">
-                    <img  loading="lazy" src="{% static 'img/property1.avif' %}" alt="Image of a mansion" />
-                    <div class="properties-details">
-                        <p>Duplex- Selling</p>
-                        <p>Lagos</p>
-                    </div>
-                </div>
+        {% endfor %}
+
+        </div>
+    </div>
     
-                <div class="properties-bottom">
-                    <p>Spacious 5 Bedroom Modern Terrance Duplex</p>
-                    <div class="reviews">
-                        <div class="price">
-                            <img  loading="lazy" src="{% static 'img/naira-black.svg' %}" alt="Naira Sign">
-                            <p>110,000,000</p>
-                        </div>
-    
-                        <div class="ratings">
-                            <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
-                            <p>(0) </p>
-                        </div>
-                    </div>
-                </div>
+    <div class="pagination">
+        <div class="pagination-text">
+            <div class="pagination-text-top">
+                <p>Showing</p>
+                <span>{{paginated_properties.number}}</span>
             </div>
+            <p>of {{paginated_properties.paginator.num_pages}}</p>
+        </div>
 
-            <div class="property">
-                <div class="property-top">
-                    <img  loading="lazy" src="{% static 'img/property1.avif' %}" alt="Image of a mansion" />
-                    <div class="properties-details">
-                        <p>Duplex- Selling</p>
-                        <p>Lagos</p>
-                    </div>
-                </div>
+        <div class="pagination-number">
+            {% if paginated_properties.has_previous %}
+            <a href="?page={{ paginated_properties.previous_page_number }}">
+                <img src="{% static 'img/arrow-left.svg' %}" alt="Previous Page">
+            </a>
+            {% endif %}
     
-                <div class="properties-bottom">
-                    <p>Spacious 5 Bedroom Modern Terrance Duplex</p>
-                    <div class="reviews">
-                        <div class="price">
-                            <img  loading="lazy" src="{% static 'img/naira-black.svg' %}" alt="Naira Sign">
-                            <p>110,000,000</p>
-                        </div>
-    
-                        <div class="ratings">
-                            <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
-                            <p>(0) </p>
-                        </div>
-                    </div>
-                </div>
+            <div class="numbers">
+                {% for page_num in paginated_properties.paginator.page_range %}
+                    <span {% if page_num == paginated_properties.number %} class="active"{% endif %}>
+                        <a href="?page={{ page_num }}">{{ page_num }}</a>
+                    </span>
+                {% endfor %}
             </div>
+            {% if paginated_projects.has_next %}
+        <a href="?page={{ paginated_properties.next_page_number }}">
+            <img src="{% static 'img/arrow-right.svg' %}" alt="Next Page">
+        </a>
+        {% endif %}
         </div>
     </div>
-    
-<div class="pagination">
-    <div class="pagination-text">
-        <div class="pagination-text-top">
-            <p>Showing</p>
-            <span>1</span>
-        </div>
-        <p>of 50</p>
-    </div>
-
-    <div class="pagination-number">
-        <img src="{% static 'img/arrow-left.svg' %}" alt="Arrow facing left">
-        <div class="numbers">
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>...</span>
-            <span>50</span>
-
-        </div>
-        <img src="{% static 'img/arrow-right.svg' %}" alt="Arrow facing right">
-    </div>
-</div>
 </div>
