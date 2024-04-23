@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY=config('SECRET_KEY')
+SECRET_KEY=config('SECRET_KEY', default = ",fh;voavnios;envlrdiuniuchthsds")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG=config('DEBUG', cast=bool)
+DEBUG=config('DEBUG', cast=bool, default = True)
 
 
 ALLOWED_HOSTS = []
@@ -205,9 +205,9 @@ JAZZMIN_UI_TWEAKS = {
 }
 
 
-EMAIL_BACKEND = config('EMAIL_BACKEND')
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_BACKEND = config('EMAIL_BACKEND', default = "'django.core.mail.backends.console.EmailBackend'")
+EMAIL_HOST = config('EMAIL_HOST' ,default = '')
+EMAIL_PORT = config('EMAIL_PORT', cast=int, default = 785)
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default = '')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default = '')
