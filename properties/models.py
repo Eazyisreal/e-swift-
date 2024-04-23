@@ -96,7 +96,7 @@ class Property(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     features = models.CharField(max_length=255)
     associated_agent = models.ManyToManyField(Agent)
-    slug = models.SlugField(unique=True, max_length=255, blank=True, null=True)
+    slug = models.SlugField(unique=True, max_length=255, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
