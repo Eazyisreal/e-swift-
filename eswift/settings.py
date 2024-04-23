@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 from decouple import config
+# settings.py
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api	
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -211,3 +215,9 @@ EMAIL_PORT = config('EMAIL_PORT', cast=int, default = 785)
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', default = '')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default = '')
+
+cloudinary.config(
+  	cloud_name = config('CLOUDINARY_CLOUD_NAME'),
+  	api_key = config('CLOUDINARY_API_KEY'),
+  	api_secret = config('CLOUDINARY_API_SECRET'),
+)

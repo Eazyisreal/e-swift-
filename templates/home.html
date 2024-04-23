@@ -78,50 +78,23 @@
             </div>
             <button class="properties-btn"> See All </button>
         </div>
-
-    <a href="{% url 'properties_details' first_property.slug %}">
-        <div class="property">
-            <div class="property-top">
-                <img  loading="lazy" src="{{first_property.thumbnail.url}}" alt="Image of a mansion" />
-                <div class="property-details">
-                    <p>{{first_property.property_type}}- {{first_property.availability}}</p>
-                    <p>{{first_property.location}}</p>
-                </div>
-            </div>
-        <div class="property-bottom">
-            <p>{{first_property.title}}</p>
-            <div class="reviews">
-                <div class="price">
-                    <img  loading="lazy" src="{% static 'img/naira.svg' %}" alt="Naira Sign">
-                    <p>{{first_property.price|format_int_with_commas }}</p>
-                </div>
-
-                <div class="ratings">
-                    <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
-                    <p>(0) </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    </a>
-    </div>
-
-    <div class="properties-right">
-        <a href="{% url 'properties_details' second_property.slug %}">
+    {% if first_property and first_property.slug %}
+    
+        <a href="{% url 'properties_details' first_property.slug %}">
             <div class="property">
                 <div class="property-top">
-                    <img  loading="lazy" src="{{second_property.thumbnail.url}}" alt="Image of a mansion" />
+                    <img  loading="lazy" src="{{first_property.thumbnail.url}}" alt="Image of a mansion" />
                     <div class="property-details">
-                        <p>{{second_property.property_type}}- {{second_property.availability}}</p>
-                        <p>{{second_property.location}}</p>
+                        <p>{{first_property.property_type}}- {{first_property.availability}}</p>
+                        <p>{{first_property.location}}</p>
                     </div>
                 </div>
             <div class="property-bottom">
-                <p>{{second_property.title}}</p>
+                <p>{{first_property.title}}</p>
                 <div class="reviews">
                     <div class="price">
                         <img  loading="lazy" src="{% static 'img/naira.svg' %}" alt="Naira Sign">
-                        <p>{{second_property.price|format_int_with_commas }}</p>
+                        <p>{{first_property.price|format_int_with_commas }}</p>
                     </div>
 
                     <div class="ratings">
@@ -130,9 +103,43 @@
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
         </a>
-        <a href="{% url 'properties_details' third_property.slug %}">
+    {% endif %}
+    </div>
+
+    <div class="properties-right">
+        {% if second_property and second_property.slug %}
+            <a href="{% url 'properties_details' second_property.slug %}">
+                <div class="property">
+                    <div class="property-top">
+                        <img  loading="lazy" src="{{second_property.thumbnail.url}}" alt="Image of a mansion" />
+                        <div class="property-details">
+                            <p>{{second_property.property_type}}- {{second_property.availability}}</p>
+                            <p>{{second_property.location}}</p>
+                        </div>
+                    </div>
+                <div class="property-bottom">
+                    <p>{{second_property.title}}</p>
+                    <div class="reviews">
+                        <div class="price">
+                            <img  loading="lazy" src="{% static 'img/naira.svg' %}" alt="Naira Sign">
+                            <p>{{second_property.price|format_int_with_commas }}</p>
+                        </div>
+
+                        <div class="ratings">
+                            <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
+                            <p>(0) </p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </a>
+        {% endif %}
+
+        {% if third_property and third_property.slug %}
+            <a href="{% url 'properties_details' third_property.slug %}">
+        {% endif %}
         <div class="property">
 
             <div class="property-top">
@@ -147,7 +154,7 @@
             <div class="reviews">
                 <div class="price">
                     <img  loading="lazy" src="{% static 'img/naira.svg' %}" alt="Naira Sign">
-                    <p>{{third_property.price|format_int_with_commas }}</p>
+                    <p>{{third_property.price }}</p>
                 </div>
 
                 <div class="ratings">
