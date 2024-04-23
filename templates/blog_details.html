@@ -1,108 +1,44 @@
 {% extends "_base.html" %}
 {% load static %}
 
-{% block title %}Blog Details{% endblock %}
-{% block meta_description %}E-Swift | Blog Details{% endblock %}
+{% block title %}{{ blog.title }}{% endblock %}
+{% block meta_description %}{{ blog.description|slice:":155" }}{% endblock %}
 {% block css %}{% static 'css/home.css' %}{% endblock %}
-{% block meta_keywords %}{% endblock %}
 
 {% block content %}
 <div class="blog-details-container">
     <div class="blog-information">
         <div class="blog-information-top">
-            <p>Date Posted: 20-Feb-2023</p>
-            <h2>Lagos commits to enforcing real estate investments laws</h2>
+            <p>Date Posted: {{ blog.created_at|date:"d-M-Y" }}</p>
+            <h2>{{ blog.title }}</h2>
         </div>
-        <p>The bad economic condition in Nigeria is impacting negatively on various sectors including real estate. This impact has, in more ways than one, cascaded to individuals, households and businesses.
-            Most affected are individuals and households living in rented accommodation who are now groaning under the weight of rent increases, especially at city suburbs where tenants are contending with over 40 percent rise in the past 12 months.
-            The combined impact of a galloping inflation, which peaked at 28.9 percent in December 2023, volatile exchange rate, naira devaluation and the removal of petrol subsidy has seen commodity prices go through the roof.
-            “The Nigerian economy has made a significant impact on the real estate market and developers in the country with fluctuating prices of building materials, inflation and currency devaluation,” Olubisi Shaola, a property law expert and a real estate developer, told BusinessDay.
-            Shaola, who is also the CEO of Finn Grey Projects, added: “The market has seen increased construction costs due to changes in the prices of building materials, labour and other inputs; developers face challenges in managing construction budgets and timelines as a result.”
-        </p>
-
-        <p>
-
-             
-            This state of affairs, according to him, has made it difficult for property developers and contractors to deliver affordable housing for over 75 percent of Nigerians who lack access to desired accommodation. There has also been a ripple effect on prices of houses, especially newly constructed buildings, as well as delayed delivery of projects.
-            “Perhaps, tenants are the worst hit as rents are rising almost on a monthly basis. Because new houses are not coming to the market as expected, landlords are taking advantage of this situation and jacking up their rents to a point that unsettles most tenants, especially those in the cities,” Cyril Adetiba, a real estate consultant, said.
-        </p>
-           
-            <p>
-            Within the past 12 months, low-income settlements have seen rent increases, with one room self-contained rising from N150,000 to N250,000; two-bedroom flat has increased from N400,000 to N600,000, while a three-bedroom apartment has risen from N500,000 to N800,000 in some locations.
-            Some highbrow locations have also seen rent increases as a two-bedroom apartment now goes for N1.2 million up from N850,000, while three bedrooms go for N1.8 million and above, up from between N1 million and N1.2 million in January 2023.</p>
+        <p>{{ blog.content }}</p>
     </div>
     <hr>
     <div class="similar-blog">
-        <form class="blog-search-form" action="" method="post">
-            <div class="relative">
-                <img  loading="lazy" class="absolute" src="{% static 'img/blog-search.svg' %}" alt="Search Icon" />
-                <input class="blog-input" type="text" name="search" id="search" placeholder="Search Keywords">
-            </div>
-            <button class="blog-search-btn" type="submit">Search</button>
-        </form>
-
-        <div class="similar-blog-bottom">
-            <h3>Similar Blog</h3>
+        <h3>Similar Blog</h3>
+        {% for similar in similar_blogs %}
             <div class="blog-featured-details">
-                <a href="{% url 'blog_details' %}">
-                    <img  loading="lazy" src="{% static 'img/blog-image1.avif' %}" alt="Project Image"/>
+                <a href="{% url 'blog_details' similar.slug %}">
+                    <img loading="lazy" src="{{ similar.image.url }}" alt="Blog Image"/>
                     <div class="blog-info">
-                        <p>20-Feb-2023</p>
-                        <p>Real-estate</p>
+                        <p>{{ similar.created_at|date:"d-M-Y" }}</p>
+                        <p>{{ similar.category }}</p>
                     </div>
-
                     <div class="blog-details">
-                        <h2>Lagos commits to enforcing real estate investments laws</h2>
-
+                        <h2>{{ similar.title }}</h2>
                         <div class="blog-text">
-                            <p>This year isn't the best of years for housing as existing deficits further worsened due to peculiarity of the environment</p>
-                            <a href="{% url 'blog_details' %}">
+                            <p>{{ similar.description|truncatewords:20 }}</p>
+                            <a href="{% url 'blog_details' similar.slug %}">
                                 <p>Read More</p>
                             </a>
                         </div>
                     </div>
                 </a>
             </div>
-
-            <div class="blog-featured-details">
-                <img  loading="lazy" src="{% static 'img/blog-image2.avif' %}" alt="Project Image"/>
-                <div class="blog-info">
-                    <p>20-Feb-2023</p>
-                    <p>Real-estate</p>
-                </div>
-
-                <div class="blog-details">
-                    <h2>Inflation,soaring housing price dim real estate sector in 2023</h2>
-
-                    <div class="blog-text">
-                        <p>This year isn't the best of years for housing as existing deficits further worsened due to peculiarity of the environment</p>
-                        <a href="">
-                            <p>Read More</p>
-                        </a>
-                    </div>
-                </div>
-            
-            </div>
-
-            <div class="blog-featured-details">
-                <img  loading="lazy" src="{% static 'img/blog-image3.avif' %}" alt="Project Image"/>
-                <div class="blog-info">
-                    <p>20-Feb-2023</p>
-                    <p>Real-estate</p>
-                </div>
-
-                <div class="blog-details">
-                    <h2>Firms seeks tax rebate for developers of affordable housing</h2>
-
-                    <div class="blog-text">
-                        <p>This year isn't the best of years for housing as existing deficits further worsened due to peculiarity of the environment</p>
-                        <a href="">
-                            <p>Read More</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% empty %}
+            <p>No similar blogs found.</p>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

@@ -16,7 +16,7 @@ class PropertyAdmin(admin.ModelAdmin):
             'fields': ('title', 'thumbnail', 'price', 'property_type', 'category', 'location', 'availability')
         }),
         ('Additional Information', {
-            'fields': ('living_room', 'dinning' ,'no_of_bedrooms', 'no_of_bathrooms', 'no_of_floors', 'features', 'associated_agent', 'slug')
+            'fields': ('living_room', 'dining' ,'no_of_bedrooms', 'no_of_bathrooms', 'no_of_floors', 'features', 'associated_agent', 'slug')
         }),
     )
     

@@ -82,20 +82,31 @@ def about(request):
 
 def blog(request):
     form = NewsletterSubscriptionForm()
-    
+    blogs = Blog.objects.all()
     if request.method == 'POST':
         form = NewsletterSubscriptionForm(request.POST)
         handle_email_subscription(request, form, 'home')
-    return render(request, 'blog.html', {"form": form})
+    return render(request, 'blog.html', {"form": form, "blogs": blogs})
 
 
-def blog_details(request):
+def blog_details(request, slug):
+    blog = get_object_or_404(Blog, slug=slug)  # Get the specific blog
+    similar_blogs = Blog.objects.filter(category=blog.category).exclude(slug=slug)[:3]  # Example to get similar blogs
+
     form = NewsletterSubscriptionForm()
-    
     if request.method == 'POST':
         form = NewsletterSubscriptionForm(request.POST)
-        handle_email_subscription(request, form, 'home')
-    return render(request, 'blog_details.html', {"form": form})
+        if form.is_valid():
+            # Assuming you have a function to handle email subscriptions
+            handle_email_subscription(request, form, 'blog_details')
+    
+    context = {
+        'blog': blog,
+        'similar_blogs': similar_blogs,
+        'form': form,
+    }
+    return render(request, 'blog_details.html', context)
+
 
 
 def project(request):

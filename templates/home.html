@@ -139,32 +139,33 @@
 
         {% if third_property and third_property.slug %}
             <a href="{% url 'properties_details' third_property.slug %}">
+
+            <div class="property">
+
+                <div class="property-top">
+                    <img  loading="lazy" src="{{third_property.thumbnail.url}}" alt="Image of a mansion" />
+                    <div class="property-details">
+                        <p>{{third_property.property_type}}- {{third_property.availability}}</p>
+                        <p>{{third_property.location}}</p>
+                    </div>
+                </div>
+            <div class="property-bottom">
+                <p>{{third_property.title}}</p>
+                <div class="reviews">
+                    <div class="price">
+                        <img  loading="lazy" src="{% static 'img/naira.svg' %}" alt="Naira Sign">
+                        <p>{{third_property.price|format_int_with_commas }}</p>
+                    </div>
+
+                    <div class="ratings">
+                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
+                        <p>(0) </p>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </a>
         {% endif %}
-        <div class="property">
-
-            <div class="property-top">
-                <img  loading="lazy" src="{{third_property.thumbnail.url}}" alt="Image of a mansion" />
-                <div class="property-details">
-                    <p>{{third_property.property_type}}- {{third_property.availability}}</p>
-                    <p>{{third_property.location}}</p>
-                </div>
-            </div>
-        <div class="property-bottom">
-            <p>{{third_property.title}}</p>
-            <div class="reviews">
-                <div class="price">
-                    <img  loading="lazy" src="{% static 'img/naira.svg' %}" alt="Naira Sign">
-                    <p>{{third_property.price }}</p>
-                </div>
-
-                <div class="ratings">
-                    <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
-                    <p>(0) </p>
-                </div>
-            </div>
-        </div>
-        </div>
-        </a>
     </div>
   </div>
 
@@ -186,7 +187,7 @@
                   <div class="featured-info">
                       <h3>{{project.title}}</h3>
                       <div class="stars">
-                          <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
+                          <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Rating Icon"/>
                           <p>(0)</p>
                       </div>
                   </div>
@@ -222,7 +223,7 @@
                         <div class="contact-info">
                             <p>Sold Properties: 4</p>
                             <p>Phone Number: {{agent.phone_number}}</p>
-                            <p>Email: {{agemt.email}}</p>
+                            <p>Email: {{agent.email}}</p>
                         </div>
                         <button class="agent-btn"> Contact </button>
                     </div>
@@ -237,7 +238,7 @@
 
   <!-- testimonials-->
   {% include 'testimonial.html' %}
-    
+
   </div>
 
 <script src="{% static 'js/scroll.js' %}"></script>
