@@ -97,10 +97,15 @@ WSGI_APPLICATION = 'eswift.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'e_swiftdb',
+        'USER': 'e_swiftuser',
+        'PASSWORD': 'mypassword',
+        'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
+        'PORT': '5432',       # The default port PostgreSQL listens on
     }
 }
+
 
 
 # Password validation
@@ -221,3 +226,4 @@ cloudinary.config(
   	api_key = config('CLOUDINARY_API_KEY'),
   	api_secret = config('CLOUDINARY_API_SECRET'),
 )
+
