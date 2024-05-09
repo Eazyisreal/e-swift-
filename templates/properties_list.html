@@ -13,10 +13,10 @@
         </div>
         <div class="featured-bottom">
         {% for property in paginated_properties %}
-            <a href="{%url 'properties_details' property.slug %}">
+            <a href="{%url 'properties_details' property_slug %}">
                 <div class="property">
                     <div class="property-top">
-                        <img  loading="lazy" src="{{property.thumbnail.url}}" alt="Image of a mansion" />
+                        <img  loading="lazy" src="{{ property.thumbnail.url|slice:'0:49' }}w_500,h_500,c_scale/{{ property.thumbnail.url|slice:'49:' }}" alt="Image of a mansion" />
                         <div class="properties-details">
                             <p>{{property.property_type}} - {{property.availability}}</p>
                             <p>{{property.location}}</p>

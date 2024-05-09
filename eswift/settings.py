@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 from decouple import config
-# settings.py
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api	
@@ -25,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY=config('SECRET_KEY', default = ",fh;voavnios;envlrdiuniuchthsds")
+SECRET_KEY=config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG=config('DEBUG', cast=bool, default = True)
+DEBUG=config('DEBUG', cast=bool)
 
 
 ALLOWED_HOSTS = []
@@ -97,12 +96,8 @@ WSGI_APPLICATION = 'eswift.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'e_swiftdb',
-        'USER': 'e_swiftuser',
-        'PASSWORD': 'mypassword',
-        'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
-        'PORT': '5432',       # The default port PostgreSQL listens on
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -214,12 +209,13 @@ JAZZMIN_UI_TWEAKS = {
 }
 
 
-EMAIL_BACKEND = config('EMAIL_BACKEND', default = "'django.core.mail.backends.console.EmailBackend'")
-EMAIL_HOST = config('EMAIL_HOST' ,default = '')
-EMAIL_PORT = config('EMAIL_PORT', cast=int, default = 785)
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = config('EMAIL_HOST_USER', default = '')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default = '')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
 cloudinary.config(
   	cloud_name = config('CLOUDINARY_CLOUD_NAME'),

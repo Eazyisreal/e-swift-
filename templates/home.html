@@ -83,7 +83,7 @@
         <a href="{% url 'properties_details' first_property.slug %}">
             <div class="property">
                 <div class="property-top">
-                    <img  loading="lazy" src="{{first_property.thumbnail.url}}" alt="Image of a mansion" />
+                    <img  loading="lazy" src="{{first_property.thumbnail.url|slice:'0:49' }}w_500,h_500,c_scale/{{ first_property.thumbnail.url|slice:'49:' }}" alt="Image of a mansion" />
                     <div class="property-details">
                         <p>{{first_property.property_type}}- {{first_property.availability}}</p>
                         <p>{{first_property.location}}</p>
@@ -113,7 +113,7 @@
             <a href="{% url 'properties_details' second_property.slug %}">
                 <div class="property">
                     <div class="property-top">
-                        <img  loading="lazy" src="{{second_property.thumbnail.url}}" alt="Image of a mansion" />
+                        <img  loading="lazy" src="{{second_property.thumbnail.url|slice:'0:49' }}w_500,h_500,c_scale/{{ second_property.thumbnail.url|slice:'49:' }}" alt="Image of a mansion" />
                         <div class="property-details">
                             <p>{{second_property.property_type}}- {{second_property.availability}}</p>
                             <p>{{second_property.location}}</p>
@@ -143,7 +143,7 @@
             <div class="property">
 
                 <div class="property-top">
-                    <img  loading="lazy" src="{{third_property.thumbnail.url}}" alt="Image of a mansion" />
+                    <img  loading="lazy" src="{{third_property.thumbnail.url|slice:'0:49' }}w_500,h_500,c_scale/{{ third_property.thumbnail.url|slice:'49:' }}" alt="Image of a mansion" />
                     <div class="property-details">
                         <p>{{third_property.property_type}}- {{third_property.availability}}</p>
                         <p>{{third_property.location}}</p>
@@ -183,7 +183,7 @@
             {% for project in recent_projects%}
             <a href="{% url 'project_details' project.slug %}">
               <div class="featured-details">
-                  <img  loading="lazy" src="{{project.thumbnail.url}}" alt="Project Image"/>
+                  <img  loading="lazy" src="{{ project.thumbnail.url|slice:'0:49' }}w_500,h_500,c_scale/{{ project.thumbnail.url|slice:'49:' }}" alt="Project Image"/>
                   <div class="featured-info">
                       <h3>{{project.title}}</h3>
                       <div class="stars">
@@ -211,7 +211,7 @@
         <div class="featured-bottom">
             {% for agent in agents %}
             <div class="agent-details">
-                <img  loading="lazy" src="{{agent.image.url}}" alt="Agent's Image"/>
+                <img loading="lazy" src="{{ agent.image.url|slice:'0:49' }}w_500,h_500,c_scale/{{ agent.image.url|slice:'49:' }}" alt="{{ agent.name }}">
                 <div class="agent-info">
                     <div class="agent-info-top">
                         <h4>{{agent.name}}</h4>

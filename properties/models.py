@@ -1,9 +1,8 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.utils.text import slugify
-from django.contrib.auth import get_user_model
+from authentication.models import CustomUser
 
-User = get_user_model()
 
 class Project_Category(models.Model):
     name = models.CharField(max_length=100)
@@ -31,6 +30,8 @@ class Agent(models.Model):
 
     def __str__(self):
         return self.name
+    
+    
 
 class Project(models.Model):
     title = models.CharField(max_length=255)
@@ -134,7 +135,7 @@ class InspectionBooking(models.Model):
 
 class Property_Review(models.Model):
     properties = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='reviews')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     comment = models.CharField(max_length=500)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -143,7 +144,7 @@ class Property_Review(models.Model):
 
 class Project_Review(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='reviews')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     comment = models.CharField(max_length=500)
     created_at = models.DateTimeField(auto_now_add=True)
 

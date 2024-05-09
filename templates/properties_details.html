@@ -67,7 +67,7 @@
     <div class="featured-bottom">
         {% for image in images %}
         <div class="featured-details">
-            <img  loading="lazy" src="{{image.associated_property_image.url}}" alt="Property Image"/>
+            <img  loading="lazy" src="{{ image.associated_property_image.url|slice:'0:49' }}w_500,h_500,c_scale/{{ image.associated_property_image.url|slice:'49:' }}" alt="Property Image"/>
         </div>
         {%endfor%}
     </div>
@@ -177,7 +177,7 @@
 
       <div class="featured">
       <div class="similar">
-        <h2>Similar Projects</h2>
+        <h2>Similar Properties</h2>
         <div class="filters">
             <div class="type">
                 <p>Selling</p>
@@ -189,64 +189,54 @@
             </div>
         </div>
       </div>
-        <div class="featured-bottom">
+      <div class="featured-bottom">
+        {%for properties in available_properties %}
+        <a href="{%url 'properties_details' property_slug %}">
             <div class="featured-details">
-                <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
+                <img  loading="lazy" src="{{ properties.thumbnail.url|slice:'0:49' }}w_500,h_500,c_scale/{{ properties.thumbnail.url|slice:'49:' }}" alt="Project Image"/>
                 <div class="featured-info">
-                    <h3>4 Bedroom Detached Luxury Apartment With Swimming Pool and Landscaping</h3>
+                    <h3>{{properties.title}}</h3>
                     <div class="stars">
                         <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
                         <p>(0)</p>
                     </div>
                 </div>
             </div>
-          </a>
-
-            <div class="featured-details">
-                <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
-                <div class="featured-info">
-                    <h3>Office Renovation Project Akure, Ondo State Nigeria</h3>
-                    <div class="stars">
-                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
-                        <p>(0)</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="featured-details">
-                <img  loading="lazy" src="{% static 'img/project.avif' %}" alt="Project Image"/>
-                <div class="featured-info">
-                    <h3>Office Renovation Project Akure, Ondo State Nigeria</h3>
-                    <div class="stars">
-                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
-                        <p>(0)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </a>
+        {%endfor%}
+    </div>
     </div>
     
 
+ 
     <div class="pagination">
         <div class="pagination-text">
             <div class="pagination-text-top">
                 <p>Showing</p>
-                <span>1</span>
+                <span>{{paginated_properties.number}}</span>
             </div>
-            <p>of 50</p>
+            <p>of {{paginated_properties.paginator.num_pages}}</p>
         </div>
 
         <div class="pagination-number">
-            <img src="{% static 'img/arrow-left.svg' %}" alt="Arrow facing left">
+            {% if paginated_properties.has_previous %}
+            <a href="?page={{ paginated_properties.previous_page_number }}">
+                <img src="{% static 'img/arrow-left.svg' %}" alt="Previous Page">
+            </a>
+            {% endif %}
+    
             <div class="numbers">
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>...</span>
-                <span>50</span>
-
+                {% for page_num in paginated_properties.paginator.page_range %}
+                    <span {% if page_num == paginated_properties.number %} class="active"{% endif %}>
+                        <a href="?page={{ page_num }}">{{ page_num }}</a>
+                    </span>
+                {% endfor %}
             </div>
-            <img src="{% static 'img/arrow-right.svg' %}" alt="Arrow facing right">
+            {% if paginated_projects.has_next %}
+        <a href="?page={{ paginated_properties.next_page_number }}">
+            <img src="{% static 'img/arrow-right.svg' %}" alt="Next Page">
+        </a>
+        {% endif %}
         </div>
     </div>
 

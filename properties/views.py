@@ -177,6 +177,7 @@ def properties_details(request, property_slug):
     inspection_form = InspectionBookingForm() 
     available_properties = Property.objects.all().order_by('-id')
     properties = get_object_or_404(Property, slug=property_slug)
+    paginated_properties = paginate_items(request, available_properties, items_per_page=9)
     images = properties.propertyimage_set.all()
     agents = properties.associated_agent.all()
 
@@ -205,6 +206,7 @@ def properties_details(request, property_slug):
         'form': form,
         'inspection_form': inspection_form,
         'property_slug': property_slug,
+        'paginated_properties': paginated_properties,
     }
     return render(request, 'properties_details.html', context)
 

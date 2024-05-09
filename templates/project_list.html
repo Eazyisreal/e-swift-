@@ -15,7 +15,7 @@
         {% for project in paginated_projects%}
           <a href="{% url 'project_details' project.slug %}">
             <div class="featured-details">
-                <img  loading="lazy" src="{{project.thumbnail.url}}" alt="Project Image"/>
+                <img  loading="lazy" src="{{ project.image.url|slice:'0:49' }}w_500,h_500,c_scale/{{ project.image.url|slice:'49:' }}" alt="Project Image"/>
                 <div class="featured-info">
                     <h3>{{project.title}}</h3>
                     <div class="stars">
