@@ -20,7 +20,7 @@
         {% for similar in similar_blogs %}
             <div class="blog-featured-details">
                 <a href="{% url 'blog_details' similar.slug %}">
-                    <img loading="lazy" src="{{ similar.image.url }}" alt="Blog Image"/>
+                    <img loading="lazy" src="{{ similar.image.url|slice:'0:49' }}w_500,h_500,c_scale/{{ similar.image.url|slice:'49:' }}" alt="Blog Image"/>
                     <div class="blog-info">
                         <p>{{ similar.created_at|date:"d-M-Y" }}</p>
                         <p>{{ similar.category }}</p>

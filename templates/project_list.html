@@ -6,26 +6,59 @@
                 <p>Selling</p>
                 <img loading="lazy" class="" src="{% static 'img/dropdown.svg' %}" alt="Search Icon" />
             </div>
-            <div class="type">
+            <div class="type" id="sort">
                 <p>All Category</p>
-                <img loading="lazy" class="" src="{% static 'img/dropdown.svg' %}" alt="Search Icon" />
+                <img id="sort-active" loading="lazy" class="" src="{% static 'img/dropdown.svg' %}" alt="Search Icon" />
             </div>
         </div>
-        <div class="featured-bottom">
-        {% for project in paginated_projects%}
-          <a href="{% url 'project_details' project.slug %}">
-            <div class="featured-details">
-                <img  loading="lazy" src="{{ project.image.url|slice:'0:49' }}w_500,h_500,c_scale/{{ project.image.url|slice:'49:' }}" alt="Project Image"/>
-                <div class="featured-info">
-                    <h3>{{project.title}}</h3>
-                    <div class="stars">
-                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
-                        <p>(0)</p>
+            <div class="sort-width">
+                <div id="sort-category" class="sort-category">
+                    <div class="sort-category-inner">
+                    {% for category in categories %}
+                        <div class="top">
+                            <a href="{% url 'project_category' category.name %}" {% if category.name == selected_category %}class="selected"{% endif %}>{{ category.name }}</a>
+                        </div>
+                        <hr />
+                    {% endfor %}
                     </div>
                 </div>
             </div>
-          </a>
-        {% endfor %}
+                    <div class="featured-bottom">
+            {% if results %}
+            {% for project in results %}
+                <a href="{% url 'project_details' project_slug=project.slug %}">
+                    <div class="featured-details">
+                        <img loading="lazy" src="{{ project.thumbnail.url|slice:'0:49' }}w_500,h_500,c_scale/{{ project.thumbnail.url|slice:'49:' }}" alt="Project Image"/>
+                        <div class="featured-info">
+                            <h3>{{project.title}}</h3>
+                            <div class="stars">
+                                <img loading="lazy" src="{% static 'img/stars.svg' %}" alt="Rating Icon"/>
+                                <p>(0)</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% elif paginated_projects %}
+            {% for project in paginated_projects %}
+                <a href="{% url 'project_details' project_slug=project.slug %}">
+                    <div class="featured-details">
+                        <img loading="lazy" src="{{ project.thumbnail.url|slice:'0:49' }}w_500,h_500,c_scale/{{ project.thumbnail.url|slice:'49:' }}" alt="Project Image"/>
+                        <div class="featured-info">
+                            <h3>{{project.title}}</h3>
+                            <div class="stars">
+                                <img loading="lazy" src="{% static 'img/stars.svg' %}" alt="Rating Icon"/>
+                                <p>(0)</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <p>No projects found matching your search criteria.</p>
+        {% endif %}
+        
+        
         </div>
     </div>
     <div class="pagination">

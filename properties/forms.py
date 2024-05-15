@@ -24,3 +24,5 @@ class ContactForm(forms.Form):
         super(ContactForm, self).__init__(*args, **kwargs)
         
         
+class ReviewForm(forms.Form):
+    comment = forms.CharField(widget=forms.Textarea)

@@ -76,4 +76,40 @@
 </div>
 
 
+<div class="agent">
+    <div class="featured">
+       <div class="featured-top">
+           <div class="agent-top-text">
+               <h2>Meet The Team</h2>
+               <p>We make the best choices with the hottest and most prestigious projects, please visit the details below to find out more.</p>
+           </div>
+       </div>
+
+       <div class="featured-bottom">
+           {% for agent in agents %}
+           <div class="agent-details">
+               <img loading="lazy" src="{{ agent.image.url|slice:'0:49' }}w_500,h_500,c_scale/{{ agent.image.url|slice:'49:' }}" alt="{{ agent.name }}">
+               <div class="agent-info">
+                   <div class="agent-info-top">
+                       <h4>{{agent.name}}</h4>
+                       <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Star Icon" />
+
+                   </div>
+
+                   <div class="agent-info-bottom">
+                       <div class="contact-info">
+                           <p>Sold Properties: 4</p>
+                           <p>Phone Number: {{agent.phone_number}}</p>
+                           <p>Email: {{agent.email}}</p>
+                       </div>
+                       <button class="agent-btn"> Contact </button>
+                   </div>
+               </div>
+           </div>
+           {%endfor%}
+       </div>
+    </div>
+ </div>
+
+
 {%endblock%}

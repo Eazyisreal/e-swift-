@@ -124,6 +124,7 @@ class ContactMessage(models.Model):
         return f"{self.name} - {self.email}"
 
 class InspectionBooking(models.Model):
+    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='property_inspection')
     name = models.CharField(max_length=255)
     phone = models.IntegerField()
     email = models.EmailField()
@@ -131,16 +132,16 @@ class InspectionBooking(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.name} - {self.email}"
+        return f"Inspection Booking for {self.property}"
 
 class Property_Review(models.Model):
-    properties = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='reviews')
+    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='reviews')
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     comment = models.CharField(max_length=500)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.email}'s Review"
+        return f'Review for {self.property} by {self.user.email}'
 
 class Project_Review(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='reviews')
@@ -149,7 +150,7 @@ class Project_Review(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.email}'s Review"
+        return f'Review for {self.project} by {self.user.email}'
 
 class NewsletterSubscription(models.Model):
     email = models.EmailField(unique=True)

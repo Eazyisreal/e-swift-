@@ -2,7 +2,7 @@
 {% load static %}
 {% load widget_tweaks %}
 {% load custom_filters %}
-{% block title %}Projects Details {% endblock %}
+{% block title %}{{project.title}} {% endblock %}
 {% block meta_description %}E-Swift | Projects Details{% endblock %}
 {% block css %}{% static 'css/home.css' %}{% endblock %}
 {% block other_css %}{% static 'css/project.css' %}{% endblock %}
@@ -82,11 +82,12 @@
 
             <button class="contact-message-btn">Send</button>
         </form>
-        <form class="contact-form">
+        <form method="post" action="{% url 'project_details' project.slug%}" class="contact-form">
+            {% csrf_token %}
             <h2>Write  a review</h2>
             <div class="contact-input-fields">
                 <div class="input-details">
-                    <textarea class="message" placeholder="Review" id="message" cols="30" rows="10"></textarea>
+                    {% render_field review_form.comment type='text' placeholder='Review' class+='message'%}
                 <p>Please login to write review!</p>
 
                 </div> 

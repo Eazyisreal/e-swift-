@@ -15,10 +15,10 @@
             <p>A great platform to buy, sell and rent your properties without any agent or commissions.</p>
         </div>
 
-        <form class="search-form" action="" method="post">
+        <form class="search-form" action="{% url 'global_search' %}" method="get">
             <div class="relative">
                 <img  loading="lazy" class="absolute" src="{% static 'img/search.svg' %}" alt="Search Icon" />
-                <input class="home-input" type="text" name="search" id="search" placeholder="Search Properties">
+                <input class="home-input" type="text" name="query"   value="{{query}}" placeholder="Search Properties">
             </div>
             <button class="search-btn" type="submit">Search</button>
         </form>
@@ -76,7 +76,9 @@
                 <h2>Properties</h2>
                 <p>We make the best choices with the hottest and most prestigious projects, please visit the details below to find out more</p>
             </div>
-            <button class="properties-btn"> See All </button>
+            <a href="{% url 'properties' %}">
+                <button class="properties-btn"> See All </button>
+            </a>
         </div>
     {% if first_property and first_property.slug %}
     
@@ -176,8 +178,10 @@
             <div class="featured-top-text">
                 <h2>Featured Projects</h2>
                 <p>We make the best choices with the hottest and most prestigeiuos projects, please visit the details below to find out more</p>
-                <button class="featured-btn"> See All </button>
             </div>
+            <a href="{% url 'project' %}">
+                <button class="featured-btn"> See All </button>
+            </a>
         </div>
         <div class="featured-bottom">
             {% for project in recent_projects%}

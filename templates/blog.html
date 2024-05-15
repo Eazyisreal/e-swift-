@@ -14,19 +14,46 @@
                 <h2>Blog</h2>
                 <p>Explore the Latest News, Tips, and Insights in Real Estate with Our Informative Blog Section</p>
             </div>
-            <form class="blog-search-form" action="" method="post">
+            <form class="blog-search-form" action="{% url 'blog' %}" method="get">
                 <div class="relative">
                     <img  loading="lazy" class="absolute" src="{% static 'img/blog-search.svg' %}" alt="Search Icon" />
-                    <input class="blog-input" type="text" name="search" id="search" placeholder="Search Keywords">
+                    <input class="blog-input" type="text" name="query" id="search" placeholder="Search Keywords">
                 </div>
                 <button class="blog-search-btn" type="submit">Search</button>
             </form>
         </div>
         <div class="featured-bottom">
+            {% if search_query %}
+                {% if results %}
+                    {% for result in results %}
+                        <div class="blog-featured-details">
+                            <a href="{% url 'blog_details' result.slug %}">
+                                <img loading="lazy" src="{{ result.image.url }}" alt="Blog Image"/>
+                                <div class="blog-info">
+                                    <p>{{ result.date|date:"d-M-Y" }}</p>
+                                    <p>{{ result.category }}</p>
+                                </div>
+            
+                                <div class="blog-details">
+                                    <h2>{{ result.title }}</h2>
+                                    <div class="blog-text">
+                                        <p>{{ result.description }}</p>
+                                        <a href="{% url 'blog_details' result.slug %}">
+                                            <p>Read More</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {%endfor%}
+                    {%else%}
+                    <p>No results Found</p>
+                    {%endif%}
+            {%else%}
             {% for blog in blogs %}
             <div class="blog-featured-details">
                 <a href="{% url 'blog_details' blog.slug %}">
-                    <img loading="lazy" src="{{ blog.image.url }}" alt="Blog Image"/>
+                    <img loading="lazy" src="{{ blog.image.url|slice:'0:49' }}w_500,h_500,c_scale/{{ blog.image.url|slice:'49:' }}" alt="Blog Image"/>
                     <div class="blog-info">
                         <p>{{ blog.date|date:"d-M-Y" }}</p>
                         <p>{{ blog.category }}</p>
@@ -46,6 +73,7 @@
             {% empty %}
             <p>No blog posts available.</p>
             {% endfor %}
+            {%endif%}
         </div>
     </div>
 </div>

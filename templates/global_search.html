@@ -1,0 +1,119 @@
+{% extends "_base.html" %}
+{% load static %}
+{% block title %} Search Results{% endblock %}
+{% block meta_description %}E-Swift | Search Results{% endblock %}
+{% block css %}{% static 'css/home.css' %}{% endblock %}
+{% block meta_keywords %}{% endblock %}
+
+{% block content %}
+<div class="blog-container">
+{% if query %}
+    <h2 class="search-text">Search Results for "{{ query }}"</h2>
+    <div class="featured-bottom">
+    
+
+    {% if results %}
+        {% if results.blogs %}
+            {% for blog in results.blogs %}
+                <div class="blog-featured-details">
+                    <a href="{% url 'blog_details' blog.slug %}">
+                        <img loading="lazy" src="{{ blog.image.url }}" alt="Blog Image"/>
+                        <div class="blog-info">
+                            <p>{{ blog.date|date:"d-M-Y" }}</p>
+                            <p>{{ blog.category }}</p>
+                        </div>
+
+                        <div class="blog-details">
+                            <h2>{{ blog.title }}</h2>
+                            <div class="blog-text">
+                                <p>{{ blog.description }}</p>
+                                <a href="{% url 'blog_details' blog.slug %}">
+                                    <p>Read More</p>
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        <!-- Search results for properties -->
+        {% if results.properties %}
+            {% for property in results.properties %}
+            <a href="{%url 'properties_details' property.slug %}">
+                <div class="property">
+                    <div class="property-top">
+                        <img  loading="lazy" src="{{ property.thumbnail.url|slice:'0:49' }}w_500,h_500,c_scale/{{ property.thumbnail.url|slice:'49:' }}" alt="Image of a mansion" />
+                        <div class="properties-details">
+                            <p>{{property.property_type}} - {{property.availability}}</p>
+                            <p>{{property.location}}</p>
+                        </div>
+                    </div>
+        
+                    <div class="properties-bottom">
+                        <p>{{property.title}}</p>
+                        <div class="reviews">
+                            <div class="price">
+                                <img  loading="lazy" src="{% static 'img/naira-black.svg' %}" alt="Naira Sign">
+                                <p>{{property.price}}</p>
+                            </div>
+        
+                            <div class="ratings">
+                                <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Ratimg Icon"/>
+                                <p>(0) </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {%endfor%}
+        {% endif %}
+        
+        {%if results.agents %}
+            {% for agent in results.agents %}
+            <div class="agent-details">
+                <img loading="lazy" src="{{ agent.image.url|slice:'0:49' }}w_500,h_500,c_scale/{{ agent.image.url|slice:'49:' }}" alt="{{ agent.name }}">
+                <div class="agent-info">
+                    <div class="agent-info-top">
+                        <h4>{{agent.name}}</h4>
+                        <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Star Icon" />
+
+                    </div>
+
+                    <div class="agent-info-bottom">
+                        <div class="contact-info">
+                            <p>Sold Properties: 4</p>
+                            <p>Phone Number: {{agent.phone_number}}</p>
+                            <p>Email: {{agent.email}}</p>
+                        </div>
+                        <button class="agent-btn"> Contact </button>
+                    </div>
+                </div>
+            {%endfor%}
+            </div>
+        {%endif%}
+
+        {%if results.projects %}
+            {% for project in results.projects%}
+            <a href="{% url 'project_details' project.slug %}">
+              <div class="featured-details">
+                  <img  loading="lazy" src="{{ project.thumbnail.url|slice:'0:49' }}w_500,h_500,c_scale/{{ project.thumbnail.url|slice:'49:' }}" alt="Project Image"/>
+                  <div class="featured-info">
+                      <h3>{{project.title}}</h3>
+                      <div class="stars">
+                          <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Rating Icon"/>
+                          <p>(0)</p>
+                      </div>
+                  </div>
+              </div>
+            </a>
+          {% endfor %}
+        {%endif%}
+    {% if not any_results_found %}
+        <p class="search-text">No results found.</p>
+    {% endif %}
+{% endif %}
+{%endif%}
+    </div>
+</div>
+{% endblock %}

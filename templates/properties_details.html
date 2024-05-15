@@ -2,14 +2,13 @@
 {% load widget_tweaks %}
 {% load static %}
 {% load custom_filters %}
-{% block title %}Properties Details {% endblock %}
+{% block title %}{{properties.title}} {% endblock %}
 {% block meta_description %}E-Swift | Properties Details{% endblock %}
 {% block css %}{% static 'css/home.css' %}{% endblock %}
 {% block other_css %}{% static 'css/project.css' %}{% endblock %}
 {% block meta_keywords %}{% endblock %}
 
 {% block content %}
-{% include 'messages.html' %}
 <div class="project-details">
     <div class="inner-project-details">
         <div class="details-container">
@@ -142,13 +141,14 @@
                     </div>
                 </div>
             {%endfor%}
-            <form class="contact-form">
+            <form method="post" action="{% url 'properties_details' properties.slug %}" class="contact-form">
+                {% csrf_token %}
                 <h2>Write  a review</h2>
                 <div class="contact-input-fields">
                     <div class="input-details">
-                        <textarea class="message" placeholder="Review" id="message" cols="30" rows="10"></textarea>
+                        {% render_field review_form.comment type='text' placeholder='Review' class+='message'%}
                     <p>Please login to write review!</p>
-
+    
                     </div> 
                 </div>
                 <button class="contact-message-btn">Submit Review</button>

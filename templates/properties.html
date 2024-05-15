@@ -13,9 +13,8 @@
         <div class="hero-text">
             <h1>Properties</h1>
             <p>Each place is a good choice, it will help you make the right decision, do not miss the opportunity to discover our wonderful properties.</p>
-
             <div class="advance-search">
-                <form class="inner-advanced-search">
+                <form class="inner-advanced-search" method="GET" action="{% url 'properties' %}">
                     <div class="top-search">
                         <div class="top-top-search">
                             <div class="search-details">
@@ -23,24 +22,24 @@
                                     <h2>Keyword:</h2>
                                     <div class="project-search-form relative">
                                         <img loading="lazy" class="absolute" src="{% static 'img/blog-search.svg' %}" alt="Search Icon" />
-                                        <input class="input" type="text" name="search" id="search" placeholder="Search Properties">
+                                        <input class="input" type="text" name="keyword" id="keyword" placeholder="Search Properties" value="{{ request.GET.keyword }}">
                                     </div>
                                 </div>
                                 <div class="inner-search-details">
                                     <h2>Location:</h2>
                                     <div class="project-search-form relative">
                                         <img loading="lazy" class="absolute" src="{% static 'img/location.svg' %}" alt="Search Icon" />
-                                        <input class="advanced-search-input" type="text" name="search" id="search" placeholder="City, State">
+                                        <input class="advanced-search-input" type="text" name="location" id="location" placeholder="City, State" value="{{ request.GET.location }}">
                                     </div>
                                 </div>
                                 <div class="inner-search-details">
                                     <h2>Category:</h2>
                                     <div class="search-form relative">
                                         <select class="select" name="category" id="category">
-                                            <option value="" selected disabled>All Category</option>
-                                            <option value="category1">Category 1</option>
-                                            <option value="category2">Category 2</option>
-                                            <option value="category3">Category 3</option>
+                                            <option value="" {% if not request.GET.category %}selected{% endif %} disabled>All Category</option>
+                                            {% for category in categories %}
+                                                <option value="{{ category }}" {% if request.GET.category == category %}selected{% endif %}>{{ category }}</option>
+                                            {% endfor %}
                                         </select>
                                     </div>
                                 </div>
@@ -51,50 +50,51 @@
                                     <img loading="lazy" class="" src="{% static 'img/dropdown.svg' %}" alt="Search Icon" />
                                 </div>
                                 <div id="dropdown-details" class="search-details">
-                                     <div class="inner-search-details">
-                                        <h2>Blocks:</h2>
+                                    <div class="inner-search-details">
+                                        <h2>Bedrooms:</h2>
                                         <div class="project-search-form relative">
-                                            <select class="select" name="category" id="category">
-                                                <option value="" selected disabled>0</option>
-                                                <option value="category1">1</option>
-                                                <option value="category2">2</option>
-                                                <option value="category3">3</option>
+                                            <select class="select" name="blocks" id="blocks">
+                                                <option value="" {% if not request.GET.blocks %}selected{% endif %} disabled>0</option>
+                                                {% for i in max_bedrooms %}
+                                                    <option value="{{ i }}" {% if request.GET.blocks == i %}selected{% endif %}>{{ i }}</option>
+                                                {% endfor %}
                                             </select>
                                         </div>
                                     </div>
                                     <div class="inner-search-details">
                                         <h2>Floor:</h2>
                                         <div class="project-search-form relative">
-                                            <select class="select" name="category" id="category">
-                                                <option value="" selected disabled>0</option>
-                                                <option value="category1">1</option>
-                                                <option value="category2">2</option>
-                                                <option value="category3">3</option>
+                                            <select class="select" name="floor" id="floor">
+                                                <option value="" {% if not request.GET.floor %}selected{% endif %} disabled>0</option>
+                                                {% for i in  max_floors %}
+                                                    <option value="{{ i }}" {% if request.GET.floor == i %}selected{% endif %}>{{ i }}</option>
+                                                {% endfor %}
                                             </select>
                                         </div>
                                     </div>
                                     <div class="inner-search-details">
-                                        <h2>Rooms:</h2>
+                                        <h2>Bathrooms:</h2>
                                         <div class="project-search-form relative">
-                                            <select class="select" name="category" id="category">
-                                                <option value="" selected disabled>0</option>
-                                                <option value="category1">1</option>
-                                                <option value="category2">2</option>
-                                                <option value="category3">3</option>
+                                            <select class="select" name="rooms" id="rooms">
+                                                <option value="" {% if not request.GET.rooms %}selected{% endif %} disabled>0</option>
+                                                {% for i in max_bathrooms %}
+                                                    <option value="{{ i }}" {% if request.GET.rooms == i %}selected{% endif %}>{{ i }}</option>
+                                                {% endfor %}
                                             </select>
                                         </div>
                                     </div>
+                                    
+                                    
                                 </div>
                             </div>
                         </div>
-
+        
                         <div class="buttons">
                             <button class="submit" type="submit"> Search </button>
                             <button class="reset" type="reset"> Clear All </button>
                         </div>
                     </div>
                 </form>
-                
             </div>
         </div>
     </div>
