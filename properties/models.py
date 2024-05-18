@@ -121,7 +121,18 @@ class ContactMessage(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.name} - {self.email}"
+        return f"{self.name} - {self.email}'s Message"
+    
+class ProjectContactMessage(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='project_messages')
+    name = models.CharField(max_length=255)
+    phone = models.IntegerField()
+    email = models.EmailField()
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Contact Message about {self.project}"
 
 class InspectionBooking(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='property_inspection')
@@ -174,3 +185,17 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+    
+    
+class Staff(models.Model):
+    name= models.CharField(max_length=100)
+    position = models.CharField(max_length=100)
+    image = CloudinaryField('image', null=True, blank=True)
+    phone = models.IntegerField()
+    email = models.EmailField()
+    
+    
+    def __str__(self):
+        return f'{self.name} - {self.position}'
+
+    

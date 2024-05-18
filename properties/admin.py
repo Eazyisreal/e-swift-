@@ -51,6 +51,7 @@ class ProjectImageAdmin(admin.ModelAdmin):
 
     
 admin.site.register(Agent)
+admin.site.register(Staff)
 admin.site.register(Blog)
 admin.site.register(Property, PropertyAdmin)
 admin.site.register(Project_Review)
@@ -62,4 +63,5 @@ admin.site.register(Project_Category)
 admin.site.register(ProjectImage, ProjectImageAdmin)
 admin.site.register(PropertyImage,PropertyImageAdmin)
 admin.site.register(ContactMessage)
+admin.site.register(ProjectContactMessage)
 admin.site.register(Property_Category)

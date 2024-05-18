@@ -1,14 +1,26 @@
 {% extends "_base.html" %}
 {% load static %}
 {% load custom_filters %}
-{% block title %}Home{% endblock %}
-{% block meta_description %}E-Swift | Home{% endblock %}
+
+{% block title %}Home | e-Swift Propertymart{% endblock %}
+{% block meta_description %}Discover your dream home with e-Swift Propertymart. We offer a wide range of properties to meet all your real estate needs.{% endblock %}
+{% block meta_keywords %}real estate, e-Swift, property listings, homes for sale, real estate services, buy property{% endblock %}
 {% block css %}{% static 'css/home.css' %}{% endblock %}
-{% block meta_keywords %}{% endblock %}
+
+{% block og_title %}Home | e-Swift Real Propertymart{% endblock %}
+{% block og_description %}Discover your dream home with e-Swift Real Estate. Explore our wide range of property listings and find the perfect place to call home.{% endblock %}
+{% block og_image %}{% static 'img/logo.svg' %}{% endblock %}
+{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
+{% block og_type %}website{% endblock %}
+
+{% block twitter_title %}Home | e-Swift Propertymart{% endblock %}
+{% block twitter_description %}Discover your dream home with e-Swift Propertymart. Explore our wide range of property listings and find the perfect place to call home.{% endblock %}
+{% block twitter_image %}{% static 'img/logo.svg' %}{% endblock %}
+
 
 {% block content %}
 <!-- Hero Section -->
-  <div class="hero">
+  <div class="hero" id="hero">
     <div class="inner-hero">
         <div class="hero-text">
             <h1>Easy way to find your <br> dream property</h1>
@@ -244,6 +256,51 @@
   {% include 'testimonial.html' %}
 
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var hero = document.getElementById('hero');
+      var images = ['hero-image.avif', 'property2.avif', 'skyscraper.avif', 'image.png', 'hero-image.jpeg'];
+      var preloadedImages = [];
+      var currentIndex = 0;
+  
+      // Function to preload images
+      function preloadImages(imageUrls, callback) {
+        var loadedCount = 0;
+        var totalImages = imageUrls.length;
+  
+        imageUrls.forEach(function(url, index) {
+          preloadedImages[index] = new Image();
+          preloadedImages[index].src = '../static/img/' + url;
+          preloadedImages[index].onload = function() {
+            loadedCount++;
+            if (loadedCount === totalImages) {
+              callback();
+            }
+          };
+          preloadedImages[index].onerror = function() {
+            console.error('Failed to load image:', url);
+            loadedCount++;
+            if (loadedCount === totalImages) {
+              callback();
+            }
+          };
+        });
+      }
+  
+      // Function to change the background image
+      function changeBackground() {
+        hero.style.backgroundImage = 'url(' + preloadedImages[currentIndex].src + ')';
+        currentIndex = (currentIndex + 1) % preloadedImages.length;
+      }
+  
+      // Preload images and start the background rotation
+      preloadImages(images, function() {
+        changeBackground(); // Show the first image immediately
+        setInterval(changeBackground, 5000); // Change background every 5 seconds
+      });
+    });
+  </script>
+  
 
 <script src="{% static 'js/scroll.js' %}"></script>
 

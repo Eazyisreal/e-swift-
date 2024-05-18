@@ -1,11 +1,22 @@
 {% extends "_base.html" %}
 {% load static %}
 
-{% block title %}Projects{% endblock %}
-{% block meta_description %}E-Swift | Projects{% endblock %}
+{% block title %}Projects | e-Swift Propertymart{% endblock %}
+{% block meta_description %}Discover the latest projects by e-Swift Propertymart, showcasing our commitment to excellence in real estate.{% endblock %}
+{% block meta_keywords %}e-Swift, real estate, projects, property development{% endblock %}
 {% block css %}{% static 'css/home.css' %}{% endblock %}
 {% block other_css %}{% static 'css/project.css' %}{% endblock %}
-{% block meta_keywords %}{% endblock %}
+
+{% block og_title %}Projects | e-Swift Propertymart{% endblock %}
+{% block og_description %}Discover the latest projects by e-Swift Propertymart, showcasing our commitment to excellence in real estate.{% endblock %}
+{% block og_image %}{% static 'img/projects_og_image.jpg' %}{% endblock %}
+{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
+{% block og_type %}website{% endblock %}
+
+{% block twitter_title %}Projects | e-Swift Propertymart{% endblock %}
+{% block twitter_description %}Discover the latest projects by e-Swift Propertymart, showcasing our commitment to excellence in real estate.{% endblock %}
+{% block twitter_image %}{% static 'img/projects_twitter_image.jpg' %}{% endblock %}
+
 
 {% block content %}
 <div class="project-hero">

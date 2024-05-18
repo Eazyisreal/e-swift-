@@ -1,11 +1,22 @@
 {% extends "_base.html" %}
 {% load static %}
 {% load widget_tweaks %}
-{% block title %}Contact Us{% endblock %}
-{% block meta_description %}E-Swift | Contact Us{% endblock %}
+{% block title %}Contact Us | e-Swift Propertymart{% endblock %}
+{% block meta_description %}Get in touch with e-Swift Propertymart for all your real estate inquiries and support.{% endblock %}
+{% block meta_keywords %}e-Swift, real estate, contact, support, inquiries{% endblock %}
 {% block css %}{% static 'css/home.css' %}{% endblock %}
 {% block other_css %}{% static 'css/project.css' %}{% endblock %}
-{% block meta_keywords %}{% endblock %}
+
+{% block og_title %}Contact Us | e-Swift Propertymart{% endblock %}
+{% block og_description %}Get in touch with e-Swift Propertymart for all your real estate inquiries and support.{% endblock %}
+{% block og_image %}{% static 'img/contact_og_image.jpg' %}{% endblock %}
+{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
+{% block og_type %}website{% endblock %}
+
+{% block twitter_title %}Contact Us | e-Swift Propertymart{% endblock %}
+{% block twitter_description %}Get in touch with e-Swift Propertymart for all your real estate inquiries and support.{% endblock %}
+{% block twitter_image %}{% static 'img/contact_twitter_image.jpg' %}{% endblock %}
+
 
 {% block content %}     
 <div class="contact-hero">

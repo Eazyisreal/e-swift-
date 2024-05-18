@@ -1,10 +1,14 @@
 .hero {
-    background: url('../img/hero-image.avif') no-repeat center;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-}
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+    mix-blend-mode: darken;
+  }
+  
 
 a{
     text-decoration: none;
@@ -475,7 +479,7 @@ input::placeholder {
     align-items: center;
 }
 
-.featured.top {
+.featured-top {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -571,6 +575,13 @@ input::placeholder {
 
 .agent {
     background: url('../img/pattern2.avif') no-repeat center #050505;
+    padding: 8rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+}
+.staff {
+    background: #050505;
     padding: 8rem 2rem;
     display: flex;
     flex-direction: column;
@@ -689,6 +700,7 @@ input::placeholder {
     display: flex;
     flex-direction: column;
     gap: 1.125rem;
+    width: 100%;
 }
 
 .blog-information p{
@@ -743,6 +755,19 @@ input::placeholder {
     font-weight: 700;
     line-height: 1.3;
     font-size: 2.625rem;
+}
+
+.similar-blog h3{
+    font-family: 'Neue Montreal', sans-serif;
+    font-weight: 500;
+    line-height: 1.3;
+    font-size: 2rem;
+}
+.similar-blog p{
+    font-family: 'Neue Montreal Medium', sans-serif;
+    font-weight: 500;
+    line-height: 1.3;
+    font-size: 1.25rem;
 }
 
 .blog-details h2 {
@@ -1134,9 +1159,7 @@ option {
         width: 100%;
     }
 
-    .featured-btn{
-        width: 50%;
-    }
+
     .properties-text-top p , .featured-top-text p, .agent-top-text p{
         width: 100%;
     }

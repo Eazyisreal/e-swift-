@@ -102,11 +102,13 @@ def home(request):
 
 
 def about(request):
+    staffs = Staff.objects.all().order_by('-id')
     form = NewsletterSubscriptionForm()
     if request.method == 'POST':
         form = NewsletterSubscriptionForm(request.POST)
         handle_email_subscription(request, form, 'about')
-    return render(request, 'about.html', {"form": form})
+    context = { 'form': form, 'staffs': staffs}
+    return render(request, 'about.html', context)
 
 
 def blog(request):
@@ -198,6 +200,7 @@ def project(request, category_name=None):
     return render(request, 'project.html', context)
 def project_details(request, project_slug, category_name=None):
     form = NewsletterSubscriptionForm()
+    contact_form = ProjectContactForm()
     review_form = ReviewForm()
     project = get_object_or_404(Project, slug=project_slug)
     available_projects = Project.objects.all().order_by('-id')
@@ -207,6 +210,22 @@ def project_details(request, project_slug, category_name=None):
     else:
         projects = [project]
     paginated_projects = paginate_items(request, projects, items_per_page=9)
+    if request.method == 'POST':
+        contact_form = ProjectContactForm(request.POST)
+        project_instance = get_object_or_404(Project, slug=project_slug)
+        if contact_form.is_valid():
+                contact_message = ProjectContactMessage.objects.create(
+                    project= project_instance,
+                    name=contact_form.cleaned_data['name'],
+                    email=contact_form.cleaned_data['email'],
+                    phone=contact_form.cleaned_data['phone_number'],
+                    message=contact_form.cleaned_data['message']
+                )
+                contact_message.save()
+                messages.success(request, 'Your message has been sent successfully! We will get back to you soon.')
+                return redirect('project_details', project_slug=project_slug)
+    else:
+        contact_form = ProjectContactForm()
     if request.method == 'POST':
         review_form = ReviewForm(request.POST)
         if form.is_valid():
@@ -236,6 +255,7 @@ def project_details(request, project_slug, category_name=None):
         'selected_category': category_name,
         'form': form,
         'review_form': review_form,
+        'contact_form': contact_form,
         'project_slug': project_slug,
     }
     return render(request, 'project_details.html', context)

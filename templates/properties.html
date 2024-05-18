@@ -1,11 +1,22 @@
 {% extends "_base.html" %}
 {% load static %}
 
-{% block title %}Properties{% endblock %}
-{% block meta_description %}E-Swift | Properties{% endblock %}
+{% block title %}Properties | e-Swift Propertymart{% endblock %}
+{% block meta_description %}Explore our diverse range of properties at e-Swift Propertymart. Find your perfect property today.{% endblock %}
+{% block meta_keywords %}e-Swift, real estate, properties, property listings, homes for sale, real estate services{% endblock %}
 {% block css %}{% static 'css/home.css' %}{% endblock %}
 {% block other_css %}{% static 'css/project.css' %}{% endblock %}
-{% block meta_keywords %}{% endblock %}
+
+{% block og_title %}Properties | e-Swift Propertymart{% endblock %}
+{% block og_description %}Explore our diverse range of properties at e-Swift Propertymart. Find your perfect property today.{% endblock %}
+{% block og_image %}{% static 'img/properties_og_image.jpg' %}{% endblock %}
+{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
+{% block og_type %}website{% endblock %}
+
+{% block twitter_title %}Properties | e-Swift Propertymart{% endblock %}
+{% block twitter_description %}Explore our diverse range of properties at e-Swift Propertymart. Find your perfect property today.{% endblock %}
+{% block twitter_image %}{% static 'img/properties_twitter_image.jpg' %}{% endblock %}
+
 
 {% block content %}
 <div class="project-hero">

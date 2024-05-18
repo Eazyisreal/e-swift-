@@ -59,24 +59,37 @@
 
     <div class="inner-project-details">
       <div class="details-container">
-        <form class="contact-form">
+        <form method="post" action="{% url 'project_details' project.slug %}" class="contact-form">
+            {% csrf_token %}
             <h2>Contact</h2>
             <div class="contact-input-fields">
                     <div class="input-details">
                         <label for="Name"> Name</label>
-                        <input type="text" name="name" id="name" placeholder="Name">
+                        {% render_field contact_form.name type='text' placeholder='Name' class+='form-input'%}
+                        {% if contact_form.errors.name %}
+                            <p class="error">{{ contact_form.errors.name }}</p>
+                        {% endif %}
                     </div>
                     <div class="input-details">
                         <label for="Phone"> Phone</label>
-                        <input type="text" name="" id="phone" placeholder="Phone">
+                        {% render_field contact_form.phone_number type='tel' placeholder='Phone' class+='form-input'%}
+                        {% if contact_form.errors.phone_number %}
+                            <p class="error">{{ contact_form.errors.phone_number }}</p>
+                        {% endif %}
                     </div>    
                 <div class="input-details">
                     <label for="Email"> Email</label>
-                    <input class="long-input" type="email" name="email" id="email" placeholder="Email Address">
+                    {% render_field contact_form.email type='email' placeholder='Email' class+='form-input'%}
+                    {% if contact_form.errors.email %}
+                        <p class="error">{{ contact_form.errors.email }}</p>
+                    {% endif %}
                 </div>   
                 <div class="input-details">
                     <label for="Message"> Message </label>
-                    <textarea class="message" placeholder="Message" id="message" cols="30" rows="10"></textarea>
+                    {% render_field contact_form.message class+='message' cols='30' rows='10' type='text' placeholder='Enter your message' class+='form-input'%}
+                    {% if contact_form.errors.message %}
+                        <p class="error">{{ contact_form.errors.message }}</p>
+                    {% endif %}
                 </div> 
             </div>
 

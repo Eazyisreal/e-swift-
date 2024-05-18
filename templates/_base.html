@@ -14,13 +14,24 @@
     <link rel="stylesheet" href="{% block other_css %}{% endblock %}">
     <link rel="icon" type="image/svg+xml" href="{% static 'img/logo.svg' %}" />
     {% block extra_head %} {% endblock %} {% load livereload_tags %}
+    <meta property="og:title" content="{% block og_title %}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}{% endblock %}">
+    <meta property="og:type" content="{% block og_type %}{% endblock %}">
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@YourTwitterHandle">
+    <meta name="twitter:title" content="{% block twitter_title %}{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{% endblock %}">
   </head>
   <body class="">
       <header class="header">
         <div class="inner-header">
           <a href="{% url 'home'%}">
             <img loading="lazy" class="logo" src="{% static 'img/logo.svg' %}" alt="Company's Logo" />
-            <p>e-swift <br> <span>PROPERTYMART</span></p>
+            <p>e-Swift <br> <span>PROPERTYMART</span></p>
           </a>
           <ul id="nav" class="nav">
             <a class="nav-links" href="{% url 'home'%}"><li>Home</li></a>

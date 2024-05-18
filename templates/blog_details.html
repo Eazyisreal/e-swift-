@@ -5,6 +5,17 @@
 {% block meta_description %}{{ blog.description|slice:":155" }}{% endblock %}
 {% block css %}{% static 'css/home.css' %}{% endblock %}
 
+{% block og_title %}{{ blog.title }}{% endblock %}
+{% block og_description %}{{ blog.description|slice:":200" }}{% endblock %}
+{% block og_image %}{% static 'img/default_og_image.jpg' %}{% endblock %}
+{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
+{% block og_type %}article{% endblock %}
+
+{% block twitter_title %}{{ blog.title }}{% endblock %}
+{% block twitter_description %}{{ blog.description|slice:":200" }}{% endblock %}
+{% block twitter_image %}{% static 'img/default_twitter_image.jpg' %}{% endblock %}
+
+
 {% block content %}
 <div class="blog-details-container">
     <div class="blog-information">
@@ -16,6 +27,13 @@
     </div>
     <hr>
     <div class="similar-blog">
+        <form class="blog-search-form" action="{% url 'blog' %}" method="get">
+            <div class="relative">
+                <img  loading="lazy" class="absolute" src="{% static 'img/blog-search.svg' %}" alt="Search Icon" />
+                <input class="blog-input" type="text" name="query" id="search" placeholder="Search Keywords">
+            </div>
+            <button class="blog-search-btn" type="submit">Search</button>
+        </form>
         <h3>Similar Blog</h3>
         {% for similar in similar_blogs %}
             <div class="blog-featured-details">

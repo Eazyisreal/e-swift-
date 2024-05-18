@@ -58,7 +58,7 @@
     background-color: var(--primary-color);
     color: var(--secondary-color);
     text-align: center;
-    padding: 2rem;
+    padding: .5rem 2rem;
     position: fixed;
     width: 100%;
     opacity: .7;

@@ -5,12 +5,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up | E Swift </title>
+    <title>Sign Up | e-Swift Propertymart</title>
+    <meta name="description" content="Sign up for an account with e-Swift to access exclusive features and services.">
+    <meta name="keywords" content="sign up, register, e-Swift">
+    <meta property="og:title" content="Sign Up | e-Swift Propertymart">
+    <meta property="og:description" content="Sign up for an account with e-Swift to access exclusive features and services.">
+    <meta property="og:image" content="{% static 'img/logo.svg' %}">
+    <meta property="og:url" content="{% url 'signup' %}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@YourTwitterHandle">
+    <meta name="twitter:title" content="Sign Up | e-Swift Propertymart">
+    <meta name="twitter:description" content="Sign up for an account with e-Swift to access exclusive features and services.">
+    <meta name="twitter:image" content="{% static 'img/twitter_signup_image.jpg' %}">
     <link rel="stylesheet" href="{% static 'css/registration.css' %}" />
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     <link rel="stylesheet" href="{% static 'css/project.css' %}" />
     <link rel="icon" type="image/svg+xml" href="{% static 'img/logo.svg' %}" />
-     {% load livereload_tags %}
+    {% load livereload_tags %}
 </head>
 <body> 
   {% include 'messages.html' %}

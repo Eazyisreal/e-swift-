@@ -1,11 +1,22 @@
 {% extends "_base.html" %}
 {% load static %}
 
-{% block title %}About Us{% endblock %}
-{% block meta_description %}E-Swift | About Us{% endblock %}
-{% block other_css %}{% static 'css/about.css' %}{% endblock %}
-{% block css %}{% static 'css/home.css' %}{% endblock %}
-{% block meta_keywords %}{% endblock %}
+{% block title %}About Us | e-Swift Propertymart{% endblock %}
+{% block meta_description %}Learn more about e-Swift Propertymart, our mission, vision, and the dedicated team behind our success.{% endblock %}
+{% block meta_keywords %}e-Swift, real estate, about us, real estate company, property experts, real estate services{% endblock %}
+{% block css %}{% static 'css/about.css' %}{% endblock %}
+{% block other_css %}{% static 'css/home.css' %}{% endblock %}
+
+{% block og_title %}About Us | e-Swift Real Estate{% endblock %}
+{% block og_description %}Discover the story behind e-Swift Propertymart, our core values, and the team committed to helping you find your dream property.{% endblock %}
+{% block og_image %}{% static 'img/logo.svg' %}{% endblock %}
+{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
+{% block og_type %}website{% endblock %}
+
+{% block twitter_title %}About Us | e-Swift Propertymart{% endblock %}
+{% block twitter_description %}Learn more about e-Swift Propertymart, our mission, vision, and the dedicated team behind our success.{% endblock %}
+{% block twitter_image %}{% static 'img/logo.svg' %}{% endblock %}
+
 {% block content %}
 <!-- Hero -->
 <div class="about-hero">
@@ -76,31 +87,29 @@
 </div>
 
 
-<div class="agent">
+<div class="staff">
     <div class="featured">
        <div class="featured-top">
            <div class="agent-top-text">
                <h2>Meet The Team</h2>
-               <p>We make the best choices with the hottest and most prestigious projects, please visit the details below to find out more.</p>
+               <p>Meet the exceptional individuals powering our team. </p>
            </div>
        </div>
 
        <div class="featured-bottom">
-           {% for agent in agents %}
+           {% for staff in staffs %}
            <div class="agent-details">
-               <img loading="lazy" src="{{ agent.image.url|slice:'0:49' }}w_500,h_500,c_scale/{{ agent.image.url|slice:'49:' }}" alt="{{ agent.name }}">
+               <img loading="lazy" src="{{ staff.image.url|slice:'0:49' }}w_500,h_500,c_scale/{{ staff.image.url|slice:'49:' }}" alt="{{ staff.name }}">
                <div class="agent-info">
                    <div class="agent-info-top">
-                       <h4>{{agent.name}}</h4>
-                       <img  loading="lazy" src="{% static 'img/stars.svg' %}" alt="Star Icon" />
-
+                       <h4>{{staff.name}}</h4>
                    </div>
 
                    <div class="agent-info-bottom">
                        <div class="contact-info">
-                           <p>Sold Properties: 4</p>
-                           <p>Phone Number: {{agent.phone_number}}</p>
-                           <p>Email: {{agent.email}}</p>
+                           <p>Position: {{staff.position}}</p>
+                           <p>Phone Number: {{staff.phone}}</p>
+                           <p>Email: {{staff.email}}</p>
                        </div>
                        <button class="agent-btn"> Contact </button>
                    </div>
