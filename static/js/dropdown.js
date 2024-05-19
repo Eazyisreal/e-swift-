@@ -14,5 +14,7 @@ function toggleCategories(){
 }
 
 
+
+
 dropDown.addEventListener('click', toggleDropDown);
 sort.addEventListener('click', toggleCategories);

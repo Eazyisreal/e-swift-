@@ -1,0 +1,55 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}Agents | e-Swift Propertymart{% endblock %}
+{% block meta_description %}Meet our team of experienced real estate agents at e-Swift Propertymart, dedicated to helping you find your perfect property.{% endblock %}
+{% block meta_keywords %}e-Swift, real estate, property, agents, real estate agents{% endblock %}
+{% block css %}{% static 'css/home.css' %}{% endblock %}
+
+{% block og_title %}Agents | e-Swift Propertymart{% endblock %}
+{% block og_description %}Meet our team of experienced real estate agents at e-Swift Propertymart, dedicated to helping you find your perfect property.{% endblock %}
+{% block og_image %}{% static 'img/logo.svg' %}{% endblock %}
+{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
+{% block og_type %}website{% endblock %}
+
+{% block twitter_title %}Agents | e-Swift Propertymart{% endblock %}
+{% block twitter_description %}Meet our team of experienced real estate agents at e-Swift Propertymart, dedicated to helping you find your perfect property.{% endblock %}
+{% block twitter_image %}{% static 'img/logo.svg' %}{% endblock %}
+
+{% block content %}
+<div class="agent">
+    <div class="featured">
+       <div class="featured-top">
+           <div class="agent-top-text">
+               <h2>Agents</h2>
+               <p>We make the best choices with the hottest and most prestigious projects, please visit the details below to find out more.</p>
+           </div>
+       </div>
+
+       <div class="featured-bottom">
+           {% for agent in agents %}
+           <div class="agent-details">
+               <img loading="lazy" src="{{ agent.image.url|slice:'0:49' }}w_500,h_500,c_scale/{{ agent.image.url|slice:'49:' }}" alt="{{ agent.name }}">
+               <div class="agent-info">
+                   <div class="agent-info-top">
+                       <h4>{{agent.name}}</h4>
+                       <img loading="lazy" src="{% static 'img/stars.svg' %}" alt="Star Icon" />
+                   </div>
+
+                   <div class="agent-info-bottom">
+                       <div class="contact-info">
+                           <p>Sold Properties: 4</p>
+                           <p>Phone Number: {{agent.phone_number}}</p>
+                           <p>Email: {{agent.email}}</p>
+                       </div>
+                       <a href="https://wa.me/{{ agent.phone_number }}" target="_blank">
+                           <button class="agent-btn"> Contact </button>
+                       </a>
+                   </div>
+               </div>
+           </div>
+           {% endfor %}
+       </div>
+    </div>
+ </div>
+{% endblock %}

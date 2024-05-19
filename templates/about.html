@@ -7,7 +7,7 @@
 {% block css %}{% static 'css/about.css' %}{% endblock %}
 {% block other_css %}{% static 'css/home.css' %}{% endblock %}
 
-{% block og_title %}About Us | e-Swift Real Estate{% endblock %}
+{% block og_title %}About Us | e-Swift Propertymart{% endblock %}
 {% block og_description %}Discover the story behind e-Swift Propertymart, our core values, and the team committed to helping you find your dream property.{% endblock %}
 {% block og_image %}{% static 'img/logo.svg' %}{% endblock %}
 {% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
@@ -111,7 +111,9 @@
                            <p>Phone Number: {{staff.phone}}</p>
                            <p>Email: {{staff.email}}</p>
                        </div>
-                       <button class="agent-btn"> Contact </button>
+                       <a href="https://wa.me/{{ staff.phone }}" target="_blank">
+                        <button class="agent-btn"> Contact </button>
+                    </a>
                    </div>
                </div>
            </div>

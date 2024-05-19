@@ -26,6 +26,15 @@
     <meta name="twitter:description" content="{% block twitter_description %}{% endblock %}">
     <meta name="twitter:image" content="{% block twitter_image %}{% endblock %}">
   </head>
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F6VENPKHJE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-F6VENPKHJE');
+  </script>
   <body class="">
       <header class="header">
         <div class="inner-header">
@@ -101,7 +110,7 @@
             <a class="footer-nav-links" href="{% url 'project'%}"> <li>Projects</li></a>
             <a class="footer-nav-links" href="{% url 'properties'%}"> <li>Listings</li></a>
             <a class="footer-nav-links" href="{% url 'contact'%}"> <li>Contact Us</li> </a>
-            <a class="footer-nav-links" href=""> <li>Agents</li> </a>
+            <a class="footer-nav-links" href="{% url 'agent' %}"> <li>Agents</li> </a>
           </ul>
         <div class="footer-nav-items">
           <ul class="mobile-footer-nav">

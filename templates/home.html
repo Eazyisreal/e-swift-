@@ -7,8 +7,8 @@
 {% block meta_keywords %}real estate, e-Swift, property listings, homes for sale, real estate services, buy property{% endblock %}
 {% block css %}{% static 'css/home.css' %}{% endblock %}
 
-{% block og_title %}Home | e-Swift Real Propertymart{% endblock %}
-{% block og_description %}Discover your dream home with e-Swift Real Estate. Explore our wide range of property listings and find the perfect place to call home.{% endblock %}
+{% block og_title %}Home | e-Swift Propertymart{% endblock %}
+{% block og_description %}Discover your dream home with e-Swift Propertymart. Explore our wide range of property listings and find the perfect place to call home.{% endblock %}
 {% block og_image %}{% static 'img/logo.svg' %}{% endblock %}
 {% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
 {% block og_type %}website{% endblock %}
@@ -241,7 +241,9 @@
                             <p>Phone Number: {{agent.phone_number}}</p>
                             <p>Email: {{agent.email}}</p>
                         </div>
-                        <button class="agent-btn"> Contact </button>
+                        <a href="https://wa.me/{{ agent.phone_number }}" target="_blank">
+                            <button class="agent-btn"> Contact </button>
+                        </a>
                     </div>
                 </div>
             </div>

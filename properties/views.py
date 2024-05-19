@@ -10,16 +10,20 @@ from django.db.models import Max
 
 def global_search(request):
     query = request.GET.get('query')
-    results = { 'blogs': [], 'properties': [], 'projects': [], 'agents': []}
+    results = {'blogs': [], 'properties': [], 'projects': [], 'agents': []}
 
     if query:
-        agent_results = Agent.objects.filter(Q(name__icontains=query) | Q(email__icontains=query))
+        agent_results = Agent.objects.filter(
+            Q(name__icontains=query) | Q(email__icontains=query))
         results['agents'].extend(agent_results)
-        blog_results = Blog.objects.filter(Q(title__icontains=query) | Q(content__icontains=query))
+        blog_results = Blog.objects.filter(
+            Q(title__icontains=query) | Q(content__icontains=query))
         results['blogs'].extend(blog_results)
-        property_results = Property.objects.filter(Q(title__icontains=query) | Q(location__icontains=query))
+        property_results = Property.objects.filter(
+            Q(title__icontains=query) | Q(location__icontains=query))
         results['properties'].extend(property_results)
-        project_results = Project.objects.filter(Q(title__icontains=query) | Q(location__icontains=query))
+        project_results = Project.objects.filter(
+            Q(title__icontains=query) | Q(location__icontains=query))
         results['projects'].extend(project_results)
     any_results_found = any(results.values())
     form = NewsletterSubscriptionForm()
@@ -30,9 +34,10 @@ def global_search(request):
         'query': query,
         'results': results,
         'form': form,
-        'any_results_found': any_results_found 
+        'any_results_found': any_results_found
     }
     return render(request, 'global_search.html', context)
+
 
 def custom_404(request, exception):
     return render(request, '404.html', status=404)
@@ -99,6 +104,19 @@ def home(request):
         "blogs": blogs,
     }
     return render(request, 'home.html', context)
+
+
+def agent(request):
+    agents = Agent.objects.all().order_by('-id')
+    form = NewsletterSubscriptionForm()
+    if request.method == 'POST':
+        form = NewsletterSubscriptionForm(request.POST)
+        handle_email_subscription(request, form, 'agent')
+    context= {
+         'agents': agents,
+         'form': form
+     }
+    return render(request, 'agent.html', context)
 
 
 def about(request):

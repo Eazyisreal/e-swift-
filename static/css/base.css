@@ -485,7 +485,7 @@
 @media screen and (max-width : 475px) {
 
     .header {
-        padding: 2rem 1rem;
+        padding: .5rem 1rem;
     }
 
     .harmburger-parent {
